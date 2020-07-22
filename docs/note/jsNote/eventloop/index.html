@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>浏览器中的EventLoop</title>
+  </head>
+  <body>
+    <script>
+      async function async1() {
+        console.log("async1 start",1);
+        return new Promise(resolve => {
+          // resolve 处理 thenable 也会再包裹一层 promise
+          resolve(async2());
+        }).then(() => {
+          console.log("async1 end",4);
+        });
+      }
+      // async 本身也会返回一个 promise
+      function async2() {
+        console.log("async2",2);
+        return 1
+      }
+      setTimeout(function() {
+        console.log("setTimeout",8);
+      }, 0);
+      async1();
+      new Promise(function(resolve) {
+        console.log("promise1",3);
+        resolve();
+      })
+        .then(function() {
+          console.log("promise2",5);
+        })
+        .then(function() {
+          console.log("promise3",6);
+        })
+        .then(function() {
+          console.log("promise4",7);
+        });
+    </script>
+  </body>
+</html>

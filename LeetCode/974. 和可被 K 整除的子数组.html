@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>974. 和可被 K 整除的子数组</title>
+</head>
+<body>
+    
+</body>
+<script>
+// 给定一个整数数组 A，返回其中元素之和可被 K 整除的（连续、非空）子数组的数目。
+
+// 示例：
+
+// 输入：A = [4,5,0,-2,-3,1], K = 5
+// 输出：7
+// 解释：
+// 有 7 个子数组满足其元素之和可被 K = 5 整除：
+// [4, 5, 0, -2, -3, 1], [5], [5, 0], [5, 0, -2, -3], [0], [0, -2, -3], [-2, -3]
+//  
+
+// 提示：
+
+// 1 <= A.length <= 30000
+// -10000 <= A[i] <= 10000
+// 2 <= K <= 10000
+
+// 来源：力扣（LeetCode）
+// 链接：https://leetcode-cn.com/problems/subarray-sums-divisible-by-k
+// 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+
+/**
+ * @param {number[]} A
+ * @param {number} K
+ * @return {number}
+ */
+ var subarraysDivByK = function(A, K) {
+    let map = { 0: 1 }   // 为了让边界情况也能适用通式
+  let preSum = 0       // 保存前缀和模K的结果，初始值0
+  let count = 0        // 计数
+  for (let i = 0; i < A.length; i++) { // 一次遍历做完所有事
+    preSum = (preSum + A[i]) % K // 上一次的前缀和累加当前项，再mod
+    if (preSum < 0) preSum += K  // 处理preSum为负数的情况，需要加 K
+    if (map[preSum]) {      // 之前存过的 与当前preSum相等的key
+      count += map[preSum]  // 把它出现的次数累加给count
+    }
+    if (map[preSum]) {      // 以前存过，出现次数+1
+      map[preSum]++
+    } else {                // 新存入，初始值1
+      map[preSum] = 1
+    }
+  }
+  return count              // 返回计数结果
+};
+
+var subarraysDivByK = (A, K) => {
+  let map = new Array(K).fill(0) // 初始化map数组，长度K
+  map[0] = 1 // 预置边界情况，第0项1。其他项0
+  let preSum = 0
+  let count = 0
+  for (let i = 0; i < A.length; i++) {
+    preSum = (preSum + A[i]) % K
+    if (preSum < 0) preSum += K
+    count += map[preSum] // 索引是mod，值是出现次数
+    map[preSum]++ // 出现次数+1
+  }
+  return count
+}
+
+// 作者：hyj8
+// 链接：https://leetcode-cn.com/problems/subarray-sums-divisible-by-k/solution/you-jian-qian-zhui-he-na-jiu-zai-ci-dai-ni-da-tong/
+// 来源：力扣（LeetCode）
+// 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+</script>
+</html>

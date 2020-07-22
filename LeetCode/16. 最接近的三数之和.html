@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16. 最接近的三数之和</title>
+</head>
+<body>
+    
+</body>
+<script>
+// 给定一个包括 n 个整数的数组 nums 和 一个目标值 target。找出 nums 中的三个整数，使得它们的和与 
+// target 最接近。返回这三个数的和。假定每组输入只存在唯一答案。
+
+// 示例：
+
+// 输入：nums = [-1,2,1,-4], target = 1
+// 输出：2
+// 解释：与 target 最接近的和是 2 (-1 + 2 + 1 = 2) 。
+//  
+
+// 提示：
+
+// 3 <= nums.length <= 10^3
+// -10^3 <= nums[i] <= 10^3
+// -10^4 <= target <= 10^4
+
+// 来源：力扣（LeetCode）
+// 链接：https://leetcode-cn.com/problems/3sum-closest
+// 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+ var threeSumClosest = function(nums, target) {
+    nums.sort((a,b) => a - b);
+    let res = nums[0] + nums[1] + nums[2];
+    let n = nums.length;
+    for(let i = 0;i < n;i++){
+        let left = i + 1;
+        let right = n - 1;
+        while(left < right){
+            let sum = nums[i] + nums[left] + nums[right];
+            if(Math.abs(res - target) > Math.abs(sum - target)){
+                res = sum;
+            }else if(sum > target){
+                right--;
+            }else if(sum < target){
+                left++;
+            }else if(sum === target){
+                return res;
+            }
+        }
+    }
+    return res;
+
+// 作者：Alexer-660
+// 链接：https://leetcode-cn.com/problems/3sum-closest/solution/16-zui-jie-jin-de-san-shu-zhi-he-by-alexer-660/
+// 来源：力扣（LeetCode）
+// 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+};
+</script>
+</html>

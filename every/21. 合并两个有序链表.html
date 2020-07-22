@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>21. 合并两个有序链表</title>
+</head>
+<body>
+    
+</body>
+<script>
+// 将两个升序链表合并为一个新的升序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 
+
+// 示例：
+
+// 输入：1->2->4, 1->3->4
+// 输出：1->1->2->3->4->4
+
+// 来源：力扣（LeetCode）
+// 链接：https://leetcode-cn.com/problems/merge-two-sorted-lists
+// 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+
+
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} l1
+ * @param {ListNode} l2
+ * @return {ListNode}
+ */
+ var mergeTwoLists = function(l1, l2) {
+    let head = new ListNode('head')
+    let node = head
+    let left = l1
+    let right = l2
+    while (left || right) {
+        if (left && right) {
+            if (left.val>right.val) {
+                node.next = new ListNode(right.val)
+                right = right.next
+            }else if(left.val<right.val) {
+                node.next = new ListNode(left.val)
+                left = left.next
+            }else {
+                node.next = new ListNode(left.val)
+                left = left.next
+                node = node.next
+                node.next = new ListNode(right.val)
+                right = right.next
+            }
+        }else if (left) {
+            node.next = new ListNode(left.val)
+            left = left.next
+        }else {
+            node.next = new ListNode(right.val)
+            right = right.next
+        }
+        node = node.next
+    }
+    return head.next
+};
+
+var mergeTwoLists = function(pHead1, pHead2) {
+    if(!pHead1) {
+        return pHead2
+    }else if(!pHead2) {
+        return pHead1
+    }
+    let preHead = new ListNode(-1);
+    let node = preHead
+
+    while (pHead1 && pHead2) {
+        if (pHead1.val <= pHead2.val) {
+            node.next = pHead1
+            pHead1 = pHead1.next
+        }else {
+            node.next = pHead2
+            pHead2 = pHead2.next
+        }
+        node = node.next
+    }
+
+    if (pHead1) {
+        node.next = pHead1;
+    }else if (pHead2) {
+        node.next = pHead2;
+    }
+
+    return preHead.next
+}
+</script>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+// 数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。
+
+// 摩尔投票算法
+var majorityElement = function (nums) {
+    let times = 0;
+    let result = 0;
+
+    nums.forEach(num => {
+        if (times == 0) {
+            times =1;
+            result = num
+        }else if (num == result) {
+            times+=1;
+        }else {
+            times-=1;
+        }
+    });
+
+    return result;
+}
+</script>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>面试题 02.08. 环路检测</title>
+</head>
+<body>
+    
+</body>
+<script>
+// 给定一个有环链表，实现一个算法返回环路的开头节点。
+// 有环链表的定义：在链表中某个节点的next元素指向在它前面出现过的节点，则表明该链表存在环路。
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+
+var detectCycle = function(pHead) {
+    if(!pHead || !pHead.next) {
+        return null
+    }
+    let P1 = pHead.next
+    let P2 = pHead.next.next
+    //判断时候有环
+    while(P1!=P2) {
+        if(P2 === null || P2.next===null) {
+            return null
+        }
+        P1 = P1.next
+        P2 = P2.next.next
+    }
+    //获取环的长度
+    let temp = P1
+    let length = 1
+    P1 = P1.next
+    while(temp!=P1) {
+        P1 = P1.next
+        length++
+    }
+    //找公共节点
+    P1 = P2 = pHead
+    while (length-- >0) {
+        P2 = P2.next
+    }  
+    while (P1!= P2) {
+        P1 = P1.next
+        P2 = P2.next
+    }
+    return P1
+};
+</script>
+</html>

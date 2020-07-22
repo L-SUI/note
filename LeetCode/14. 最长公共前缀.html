@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14. 最长公共前缀</title>
+</head>
+<body>
+    
+</body>
+<script>
+// 编写一个函数来查找字符串数组中的最长公共前缀。
+
+// 如果不存在公共前缀，返回空字符串 ""。
+
+// 示例 1:
+
+// 输入: ["flower","flow","flight"]
+// 输出: "fl"
+// 示例 2:
+
+// 输入: ["dog","racecar","car"]
+// 输出: ""
+// 解释: 输入不存在公共前缀。
+// 说明:
+
+// 所有输入只包含小写字母 a-z 。
+
+// 来源：力扣（LeetCode）
+// 链接：https://leetcode-cn.com/problems/longest-common-prefix
+// 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+
+/**
+ * @param {string[]} strs
+ * @return {string}
+ */
+ var longestCommonPrefix = function(strs) {
+    if(strs.length == 0) 
+        return "";
+    let ans = strs[0];
+    for(let i =1;i<strs.length;i++) {
+        let j=0;
+        for(;j<ans.length && j < strs[i].length;j++) {
+            if(ans[j] != strs[i][j])
+                break;
+        }
+        ans = ans.substr(0, j);
+        if(ans === "")
+            return ans;
+    }
+    return ans;
+
+// 作者：guanpengchn
+// 链接：https://leetcode-cn.com/problems/longest-common-prefix/solution/hua-jie-suan-fa-14-zui-chang-gong-gong-qian-zhui-b/
+// 来源：力扣（LeetCode）
+// 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+};
+</script>
+</html>

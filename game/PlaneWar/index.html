@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>飞机大战</title>
+<link rel="stylesheet" href="./css/planewar.css" />
+</head>
+<body>
+
+<div class="planewar">
+	<div class="stage1">
+		<input type="button" value="开始游戏" class="btn" />
+	</div>
+	<div class="stage2">
+		<div class="sky"></div>
+		<div class="my"><img src="images/我的飞机66_80.gif"/><div><div class="hv"></div></div></div>	
+		<div class="score">0</div>
+	</div>
+	<div class="stage3">游戏结束</div>
+</div>
+
+<script src="./js/planewar.js"></script>
+<script>
+var pw = new PlaneWar();	
+pw.init();
+</script>
+</body>
+</html>

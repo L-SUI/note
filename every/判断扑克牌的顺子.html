@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>判断扑克牌的顺子</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 从扑克牌中随机抽5张牌，判断是不是一个顺子，即这5张牌是不是连续的。
+    // 2~10为数字本身，A为1，J为11，Q为12，K为13，而大、小王为0，可以看
+    // 成任意数字，A不能视为14。
+
+    /*
+     *输入非空数组且每一项都为数字
+     *return  Bollean
+     */
+    // 暴力解法
+    // var judgePros = function (arg) {
+    //     let arr = arg.sort((a, b) => a - b)
+    //     if (arr[0] == 0 && arr[1] == 0) {
+    //         if (arr[2] == arr[3] || arr[3] == arr[4]) {
+    //             return false
+    //         } else {
+    //             return arr[4] - arr[2] <= 4 ? true : false
+    //         }
+    //     } else if (arr[0] == 0 && arr[1] != 0) {
+    //         let len = [...new Set(arr.slice(1, 5))].length
+    //         if (len < 4) {
+    //             return false
+    //         } else {
+    //             return arr[4] - arr[1] <= 4 ? true : false
+    //         }
+    //     } else {
+    //         let len = [...new Set([arr[0] + 4, arr[1] + 3, arr[2] + 2, arr[3] + 1, arr[4]])].length
+    //         return len == 1 ? true : false
+    //     }
+    // }
+
+    // 算法解1
+    // var judgePros = function (arg) {
+    //     let arr = arg.sort((a, b) => a - b)
+    //     let count = 0
+    //     for (let i = 0;i<arr.length-1;i++) {
+    //         if (arr[i]==0) {
+    //             count++
+    //         }else {
+    //             if (arr[i]+1!=arr[i+1]) {
+    //                 if (count>0) {
+    //                     count--
+    //                     if (arr[i]+2!=arr[i+1]) {
+    //                         if (count>0) {
+    //                             count--
+    //                         }else {
+    //                             return false
+    //                         }
+    //                     }
+    //                 }else {
+    //                     return false
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     return true
+    // }
+
+    // 算法解1优化
+    // var judgePros = function (arg) {
+    //     let arr = arg.sort((a, b) => a - b)
+    //     let num = 1
+    //     let count = 0
+    //     for (let i = 0;i<arr.length-1;i++) {
+    //         if (arr[i]==0) {
+    //             count++
+    //         }else {
+    //             if (arr[i]+num!=arr[i+1]) {
+    //                 if (count>0) {
+    //                     count--
+    //                     i--
+    //                     num++
+    //                 }else {
+    //                     return false
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     return true
+    // }
+
+    // 算法解2
+    var judgePros = function (arg) {
+        let arr = arg.sort((a, b) => a - b)
+        let len = arr.length
+        debugger
+        let find = arr.filter((v) => v != 0)
+        let setFind = [...new Set(find)]
+        if (find.length!=setFind.length) return false
+        let num = find[find.length - 1] - find[0]
+        return num <= 4 && num >= 4 - (len - find.length)
+    }
+    console.log(judgePros([4, 3, 1, 5, 2]))
+    console.log(judgePros([0, 3, 1, 5, 2]))
+    console.log(judgePros([0, 0, 1, 5, 2]))
+    console.log(judgePros([0, 6, 1, 5, 2]))
+    console.log(judgePros([11, 3, 1, 5, 2]))
+
+    // 参考答案
+
+    // 整体算法流程
+    // 1.首先对数组进行排序。
+    // 2.排除数组中大小王。
+    // 3.统计数组中所有相邻数之间的间隔。
+    // 4.排除对子情况
+    // 5.判断间隔值，大于4则说明不是顺子
+    var isStraight = function(nums) {
+        const minSort = nums.sort((a,b)=>a-b);
+        let sum = 0;
+        for (let i = 0; i < 4; i++) {
+            if(minSort[i]==0) {
+                continue
+            }else if(nums[i]==nums[i+1]) {
+                return false
+            }else {
+                sum = sum+nums[i+1]-nums[i]
+            }
+        }
+        return sum<5
+    }
+
+</script>
+
+</html>

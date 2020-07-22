@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>349. 两个数组的交集</title>
+</head>
+<body>
+    
+</body>
+<script>
+// 给定两个数组，编写一个函数来计算它们的交集。
+
+// 示例 1：
+
+// 输入：nums1 = [1,2,2,1], nums2 = [2,2]
+// 输出：[2]
+// 示例 2：
+
+// 输入：nums1 = [4,9,5], nums2 = [9,4,9,8,4]
+// 输出：[9,4]
+//  
+
+// 说明：
+
+// 输出结果中的每个元素一定是唯一的。
+// 我们可以不考虑输出结果的顺序。
+
+// 来源：力扣（LeetCode）
+// 链接：https://leetcode-cn.com/problems/intersection-of-two-arrays
+// 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number[]}
+ */
+ var intersection = function(nums1, nums2) {
+    let map = new Map()
+    let res = []
+    nums1.forEach(item=>{
+        map.set(item,1)
+    })
+    nums2.forEach(item=>{
+        if(map.has(item)){
+            res.push(item)
+        }
+    })
+    
+    return [...new Set(res)]
+};
+
+var intersection = function(nums1, nums2) {
+    var result = [];
+    var store;  //长array
+    var ary;    //短array
+
+    //判断nums1，nums2的长度
+    if (nums1.length>nums2.length) {
+        store = nums1;
+        ary = nums2;
+    }else {
+        store = nums2;
+        ary = nums1;
+    }
+
+    //只需要跑较短的array就行
+    for (let i = 0; i < ary.length; i++) {
+        var value = ary[i]
+        if(store.indexOf(value)>=0 && result.indexOf(value)==-1) {
+            result.push(value);
+        }
+    }
+    return result
+};
+
+var intersection = function(nums1, nums2) {
+    let arr = []
+    if (nums2.length>=nums1.length) {
+        for (let i = 0; i < nums1.length; i++) {
+            if(nums2.includes(nums1[i])) {
+                arr.push(nums1[i])
+            }
+        }
+    }else {
+        for (let i = 0; i < nums2.length; i++) {
+            if(nums1.includes(nums2[i])) {
+                arr.push(nums2[i])
+            }
+        } 
+    }
+    return Array.from(new Set(arr))
+};
+
+</script>
+</html>

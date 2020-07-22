@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>预读班JavaScript测试</title>
+</head>
+
+<body>
+    <iframe></iframe>
+    <iframe></iframe>
+    <iframe></iframe>
+    <iframe></iframe>
+    <iframe></iframe>
+    <script>
+        // var regex = /yideng/g;
+        // console.log(regex.test('yideng'));
+        // console.log(regex.test('yideng'));
+        // console.log(regex.test('yideng'));
+        // console.log(regex.test('yideng'));
+        // "use strict"
+        // var yideng = function yideng() {
+        //     yideng = 1;
+        //     console.log(typeof yideng);
+        // }
+        // yideng();
+        // yideng = 1;
+        // console.log(typeof yideng);
+        // {
+        //     // yideng = 2;
+        //     function yideng() { }
+        //     yideng = 1;
+        //     console.log("inner", yideng);
+        // }
+        // console.log(yideng);
+        // var length = 10;
+        function fn() {
+            console.log(this.length);
+        }
+        var yideng = {
+            length: 5,
+            method: function (fn) {
+                fn();
+                arguments[0]();
+            }
+        };
+        yideng.method(fn, 1);
+
+    </script>
+</body>
+
+</html>

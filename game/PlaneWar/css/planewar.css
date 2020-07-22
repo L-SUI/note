@@ -1,0 +1,88 @@
+.planewar{
+	width: 320px;
+	height: 568px;
+	border: 1px solid gray;
+	position: relative;
+}
+.planewar *{
+	position: absolute;
+}
+.stage1{
+	width: 320px;
+	height: 568px;
+	background: url(images/开始背景320_568.png);
+}
+.btn{
+	border: 1px solid gray;
+	background: #CCCCCC;
+	color: black;
+	border-radius: 10px;
+	width: 150px;
+	height: 35px;
+	left: 85px;
+	top: 400px;
+	cursor: pointer;
+}
+.stage2{
+	width: 320px;
+	height: 568px;
+	overflow: hidden;
+}
+.sky{
+	width: 320px;
+	height: 1136px;
+	background: url(images/背景320_568.png);
+	top: -568px;
+}
+.my{
+	width: 66px;
+	height: 80px;
+	top: 488px;
+	left: 127px;
+}
+.my>img{
+	width: 66px;
+	height: 80px;
+}
+.my>div{
+	border: 1px solid gray;
+	height: 3px;
+	width: 50px;
+	bottom: 0;
+}
+.my>div>div{
+	height: 3px;
+	background: blue;
+	width: 50px;
+}
+.foe{
+	
+}
+.foe>div{
+	border: 1px solid gray;
+	height: 3px;
+}
+.foe>div>div{
+	height: 3px;
+	background: red;
+}
+
+.score{
+	left: 5px;
+	top: 5px;
+}
+.score:before{
+	content: '积分:';
+}
+
+.stage3{
+	border: 1px solid gray;
+	background: #CCCCCC;
+	color: black;
+	border-radius: 10px;
+	width: 150px;
+	height: 100px;
+	left: 85px;
+	top: 400px;
+	display: none;
+}

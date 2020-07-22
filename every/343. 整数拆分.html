@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>343. 整数拆分</title>
+</head>
+<body>
+    
+</body>
+<script>
+// 给定一个正整数 n，将其拆分为至少两个正整数的和，并使这些整数的乘积最大化。 返回你可以获得的最大乘积。
+
+// 示例 1:
+
+// 输入: 2
+// 输出: 1
+// 解释: 2 = 1 + 1, 1 × 1 = 1。
+// 示例 2:
+
+// 输入: 10
+// 输出: 36
+// 解释: 10 = 3 + 3 + 4, 3 × 3 × 4 = 36。
+// 说明: 你可以假设 n 不小于 2 且不大于 58
+
+// 来源：力扣（LeetCode）
+// 链接：https://leetcode-cn.com/problems/integer-break
+// 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+
+// 题目分析
+// 题目中“n 至少可以拆分为两个正整数的和”，这个条件说明了 n 是大于 1 的整数。
+
+// 对 7 来说，可以拆成 3+4，最大乘积是 12。
+
+// 对 8 来说，可以拆成 3+3+2，最大乘积是 18。
+
+// 解法 1: 动态规划
+// 状态数组dp[i]表示：数字 i 拆分为至少两个正整数之和的最大乘积。为了方便计算，dp 的长度是 n + 1，值初始化为 1。
+
+// 显然dp[2]等于 1，外层循环从 3 开始遍历，一直到 n 停止。内层循环 j 从 1 开始遍历，一直到 i 之前停止，它代表着数字 i 可以拆分成 j + (i - j)。但 j * (i - j)不一定是最大乘积，因为i-j不一定大于dp[i - j]（数字i-j拆分成整数之和的最大乘积），这里要选择最大的值作为 dp[i] 的结果。
+
+// 空间复杂度是 O(N)O(N)，时间复杂度是 O(N^2)O(N 
+// 2
+//  )。代码实现如下：
+
+// ac地址：https://leetcode-cn.com/problems/integer-break/
+// 原文地址：https://xxoo521.com/2020-02-15-integer-break/
+
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var integerBreak = function(n) {
+    const dp = new Array(n + 1).fill(1);
+
+    for (let i = 3; i <= n; ++i) {
+        for (let j = 1; j < i; ++j) {
+            dp[i] = Math.max(dp[i], j * (i - j), j * dp[i - j]);
+        }
+    }
+
+    return dp[n];
+};
+// 解法 2: 贪心法
+// 力扣上此题给出了提示：多试试几个例子，找出规律。下面说下我找规律的思路。
+
+// 前面提到：8 拆分为 3+3+2，此时乘积是最大的。然后就推测出来一个整数，要拆成多个 2 和 3 的和，保证乘积最大。原理很容易理解，因为 2 和 3 可以合成任何数字，例如5=2+3，但是5 < 2*3；例如6=3+3，但是6<3*3。所以根据贪心算法，就尽量将原数拆成更多的 3，然后再拆成更多的 2，保证拆出来的整数的乘积结果最大。
+
+// 但上面的解法还有不足。如果整数 n 的形式是 3k+1，例如 7。按照上面规则，会拆分成“3 + 3 + 1”。但是在乘法操作中，1 是没作用的。此时，应该将 1 和 3 变成 4，也就是“3 + 3 + 1”变成“3 + 4”。此时乘积最大。
+
+// 综上所述，算法的整体思路是：
+
+// n 除 3 的结果为 a，余数是 b
+// 当 b 为 0，直接将 a 个 3 相乘
+// 当 b 为 1，将（a-1）个 3 相乘，再乘以 4
+// 当 b 为 2，将 a 个 3 相乘，再乘以 2
+// 空间复杂度是 O(1)，时间复杂度是 O(1)。代码实现如下：
+
+// ac地址：https://leetcode-cn.com/problems/integer-break/
+// 原文地址：https://xxoo521.com/2020-02-15-integer-break/
+
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var integerBreak = function(n) {
+    if (n === 2) return 1;
+    if (n === 3) return 2;
+    // a的含义：n能拆成的3的个数
+    const a = Math.floor(n / 3);
+    const b = n % 3;
+
+    // n是3的倍数
+    if (b === 0) return Math.pow(3, a);
+    // n是 3k + 1，例如7。拆成3、3、1。由于有1对结果无法有贡献，所以最后的3、1换成4
+    if (b === 1) return Math.pow(3, a - 1) * 4;
+    return Math.pow(3, a) * 2;
+};
+
+// 作者：xin-tan
+// 链接：https://leetcode-cn.com/problems/integer-break/solution/shuang-jie-fa-dong-tai-gui-hua-tan-xin-fa-fu-zhao-/
+// 来源：力扣（LeetCode）
+// 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+</script>
+</html>

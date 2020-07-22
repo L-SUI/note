@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>84. 柱状图中最大的矩形</title>
+</head>
+<body>
+    
+</body>
+<script>
+// 给定 n 个非负整数，用来表示柱状图中各个柱子的高度。每个柱子彼此相邻，且宽度为 1 。
+
+// 求在该柱状图中，能够勾勒出来的矩形的最大面积。
+
+// 示例:
+
+// 输入: [2,1,5,6,2,3]
+// 输出: 10
+
+/**
+ * @param {number[]} heights
+ * @return {number}
+ */
+ var largestRectangleArea = function(heights) {
+    var maxarea = 0;
+    var stack = [];
+    heights.push(0);
+    heights.unshift(0);
+    for(var i = 0;i < heights.length;i++){
+        while(stack.length > 0 && heights[stack[stack.length-1]] > heights[i]){
+            maxarea = Math.max(maxarea,heights[stack.pop()] * (i - stack[stack.length-1] - 1));
+        }
+        stack.push(i);
+    }
+    return maxarea;
+};
+
+// 作者：Alexer-660
+// 链接：https://leetcode-cn.com/problems/largest-rectangle-in-histogram/solution/84-zhu-zhuang-tu-zhong-zui-da-de-ju-xing-by-alexer/
+// 来源：力扣（LeetCode）
+// 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+console.log(largestRectangleArea([0,9]))
+</script>
+</html>

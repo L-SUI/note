@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>二叉树的层序遍历</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 给你一个二叉树，请你返回其按 层序遍历 得到的节点值。 （即逐层地，从左到右访问所有节点）。
+
+    // 示例：
+    // 二叉树：[3,9,20,null,null,15,7],
+
+    //     3
+    //    / \
+    //   9  20
+    //     /  \
+    //    15   7
+    // 返回其层次遍历结果：
+
+    // [
+    //   [3],
+    //   [9,20],
+    //   [15,7]
+    // ]
+
+    // 来源：力扣（LeetCode）
+    // 链接：https://leetcode-cn.com/problems/binary-tree-level-order-traversal
+    // 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+
+    /**
+     * Definition for a binary tree node.
+     * function (val) {
+     *     this.val = val;
+     *     this.left = this.right = null;
+     * }
+     */
+    /**
+     * @param {} root
+     * @return {number[][]}
+     */
+    // var levelOrder = function (root) {
+    //     let arr = []
+    //     let i = 1
+    //     while (i <= root.length + 1) {
+    //         let newarr = root.splice(0, i)
+    //         console.log(newarr)
+    //         let current = []
+    //         newarr.forEach(item => {
+    //             if (item != null) {
+    //                 current.push(item)
+    //             }
+    //         })
+    //         arr.push(current)
+    //         i *= 2
+    //     }
+    //     return arr
+    // };
+
+
+    var levelOrder = function (root) {
+        const ret = [];
+        if (!root) return ret;
+
+        const q = [];
+        q.push(root);
+        console.log(q[0])
+        while (q.length !== 0) {
+            const currentLevelSize = q.length;
+            ret.push([]);
+            for (let i = 1; i <= currentLevelSize; ++i) {
+                //array.shift 删除数组的第一项并返回第一项的值
+                const node = q.shift();
+                ret[ret.length - 1].push(node.val);
+                if (node.left) q.push(node.left);
+                if (node.right) q.push(node.right);
+            }
+        }
+            
+        return ret;
+    };
+
+    console.log(levelOrder({
+                val:3,
+                left: {
+                    val:9,
+                    left:null,
+                    right:null
+                },
+                right: {
+                    val:20,
+                    left: {
+                        val:15,
+                        left:null,
+                        right:null
+                    },
+                    right: {
+                        val:7,
+                        left:null,
+                        right:null
+                    }
+                }
+            }))
+</script>
+
+</html>

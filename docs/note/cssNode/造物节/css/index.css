@@ -1,0 +1,40 @@
+body{
+	background-image: url('../img/bg.jpg');
+}
+
+.container{
+	margin: -50px auto 0 auto;
+	width: 8.0625rem;
+	height: 5.125rem;
+	/*perspective: 25rem;*/
+
+	animation: persPect 6s both;
+   	-ms-animation: persPect 6s both;
+    	-moz-animation: persPect 6s both;
+    	-webkit-animation: persPect 6s both;
+    	-o-animation: persPect 6s both;
+}
+
+#box{
+	-webkit-transform-style: preserve-3d;
+	height: 100%;
+	 -webkit-perspective-origin: 50% 50%;
+}
+
+#box > div{
+	position: absolute;
+	width: 8.0625rem;
+	height: 73.125rem;
+	
+}
+
+
+@keyframes persPect {
+    0%{
+        perspective: 5rem;
+    }
+    100%{
+        perspective: 25rem;
+    }
+}
+

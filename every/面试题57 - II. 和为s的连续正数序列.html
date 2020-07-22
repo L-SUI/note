@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>面试题57 - II. 和为s的连续正数序列</title>
+</head>
+<body>
+    
+</body>
+<script>
+// 输入一个正整数 target ，输出所有和为 target 的连续正整数序列（至少含有两个数）。
+
+// 序列内的数字由小到大排列，不同序列按照首个数字从小到大排列。
+
+//  
+
+// 示例 1：
+
+// 输入：target = 9
+// 输出：[[2,3,4],[4,5]]
+// 示例 2：
+
+// 输入：target = 15
+// 输出：[[1,2,3,4,5],[4,5,6],[7,8]]
+
+// 来源：力扣（LeetCode）
+// 链接：https://leetcode-cn.com/problems/he-wei-sde-lian-xu-zheng-shu-xu-lie-lcof
+// 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+
+
+/**
+ * @param {number} target
+ * @return {number[][]}
+ */
+//  前缀和解法
+ var findContinuousSequence = function(target) {
+    let res = []
+    let map = new Map()
+    let num = 0
+    let i = 1
+    let max = Math.ceil(target/2)
+    let arr = []
+    while (i<=max) {
+        arr.push(i)
+        num+=i
+        map.set(num,i)
+        if (num ==target) {
+            res.push(arr.slice(0,i))
+        }
+        let sum = num-target
+        if (map.has(sum)) {
+            res.push(arr.slice(map.get(sum)-1,i))
+        }
+        i++
+    }
+    return res
+
+};
+// console.log(findContinuousSequence(25))
+
+var findContinuousSequence = function(target) {
+    let i=1;
+    let res=[]
+    while((i*(i+1)/2)<target){
+        let tmp=target-i*(i+1)/2
+        if(tmp%(i+1)===0){
+            let x = tmp/(i+1)
+            console.log(i,tmp,x)
+            res.push( new Array(i+1).fill(x).map((x,y)=>x+y))
+        }
+        i=i+1
+    }
+    res.sort((a,b)=>a[0]-b[0])
+    return res;
+// 作者：bu-he-shi-ling-de-die-yu
+// 链接：https://leetcode-cn.com/problems/he-wei-sde-lian-xu-zheng-shu-xu-lie-lcof/solution/jian-ge-fa-fei-yao-zui-hou-ba-jie-guo-pai-xu-xia-b/
+// 来源：力扣（LeetCode）
+// 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+};
+
+var findContinuousSequence = function(target) {
+    let res = []
+    let i = 2
+    while(i<target/2){
+        let x = (2*target+i-i*i)/(2*i)
+        if(x<=0) break
+        if (x%1 === 0) {
+            let arr = []
+            for(let j=0;j<i;j++) {
+                arr.push(x+j)
+            }
+            res.push(arr)
+        }
+        i++
+    }
+    res.sort((a,b)=>a[0]-b[0])
+    return res;
+};
+
+console.log(findContinuousSequence(100))
+
+//参考答案 移动窗口
+
+
+</script>
+</html>
