@@ -14,7 +14,7 @@ module.exports = {
     themeConfig: {
         sidebarDepth: 2,
         smoothScroll: true,
-        repo: 'L-SUI/L-SUI.github.io',
+        repo: 'L-SUI/note',
         nav,
         sidebar,
         docsDir: 'docs',
