@@ -11,5 +11,5 @@ features:
   details: 想不起来的时候就看呗
 - title: 开源贡献
   details: 热爱开源，忠于开源。
-footer: MIT Licensed | Copyright © 2018-present Dong
+footer: MIT Licensed | Copyright © 2020-present Dong
 ---
