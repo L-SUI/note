@@ -126,6 +126,7 @@ const note = [
         collapsable: false,
         children: [
             'optimization/性能优化一',
+            'optimization/性能优化二',
         ]
     },
 ]

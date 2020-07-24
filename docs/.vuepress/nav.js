@@ -5,19 +5,19 @@ const note = {
 }
 
 // 算法
-// const algorithm = {
-//     text: '算法',
-//     items: [
-//         {
-//             text: '每日',
-//             link: '/every/',
-//         },
-//         {
-//             text: 'LeetCode',
-//             link: '/LeetCode/',
-//         }
-//     ]
-// }
+const algorithm = {
+    text: '算法',
+    items: [
+        {
+            text: '每日',
+            link: 'https://github.com/L-SUI/note/tree/master/every',
+        },
+        {
+            text: 'LeetCode',
+            link: 'https://github.com/L-SUI/note/tree/master/LeetCode/',
+        }
+    ]
+}
 
 // more
 // const more = {
@@ -33,6 +33,6 @@ const note = {
 
 module.exports = [
     note,
-    // algorithm,
+    algorithm,
     // more
 ]
