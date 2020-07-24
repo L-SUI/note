@@ -96,7 +96,7 @@ const note = [
         ]
     },
     {
-        title: 'jsNote',
+        title: 'js相关',
         collapsable: false,
         children: [
             'jsNote/base/函数柯里化curry',
@@ -119,6 +119,13 @@ const note = [
         collapsable: false,
         children: [
             'QA/JavaScript&QA',
+        ]
+    },
+    {
+        title: '性能优化',
+        collapsable: false,
+        children: [
+            'optimization/性能优化一',
         ]
     },
 ]
