@@ -1,6 +1,16 @@
 // note
 const note = [
     {
+        title: '性能优化',
+        collapsable: false,
+        children: [
+            'optimization/性能优化一',
+            'optimization/性能优化二',
+            'optimization/性能优化三',
+            'optimization/性能优化四',
+        ]
+    },
+    {
         title: 'TypeScript',
         collapsable: false,
         children: [
@@ -32,7 +42,7 @@ const note = [
             'linux/linux_deploy',
             'linux/linux_centos',
             'linux/BasicCommand',
-            'linux/linux免密登陆',
+            // 'linux/linux免密登陆',
         ]
     },
     {
@@ -121,14 +131,7 @@ const note = [
             'QA/JavaScript&QA',
         ]
     },
-    {
-        title: '性能优化',
-        collapsable: false,
-        children: [
-            'optimization/性能优化一',
-            'optimization/性能优化二',
-        ]
-    },
+    
 ]
 
 // 算法
