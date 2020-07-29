@@ -103,6 +103,7 @@ const note = [
         collapsable: false,
         children: [
             'automation/jenkins',
+            'automation/cli',
         ]
     },
     {
