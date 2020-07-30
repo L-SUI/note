@@ -23,6 +23,20 @@ rpm -qa jenkins
 systemctl start jenkins
 #启动Jenkins 打开浏览区访问服务器域名8080端口
 #Jenkins安装完成之后是一个服务，不用的时候可以关掉。
+
+
+# 将jenkins账号分别加入到root组中 
+gpasswd -a root jenkins 
+#（还有一种说法是：gpasswd -a jenkins root）
+
+# 修改/etc/sysconfig/jenkins文件中， # user id to be invoked as (otherwise will run as root; not wise!)
+vi /etc/sysconfig/jenkins
+
+JENKINS_USER=root
+
+JENKINS_GROUP=root 
+#可以修改为root权限运行
+systemctl restart jenkins
 ```
 
 
