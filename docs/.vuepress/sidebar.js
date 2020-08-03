@@ -8,6 +8,7 @@ const note = [
             'optimization/性能优化二',
             'optimization/性能优化三',
             'optimization/性能优化四',
+            'optimization/IOC',
         ]
     },
     {
