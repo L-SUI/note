@@ -1,4 +1,4 @@
-# Jenkins笔记
+# Jenkins
 
 [Jenkins官网：https://www.jenkins.io/](https://www.jenkins.io/)
 
@@ -67,6 +67,10 @@ cat 复制的路径
 > GitHub Integration   
 > Publish Over SSH    
 > SSH Agent
+> Build-timeout  设置时间
+
+### Build-timeout
+![WechatIMG1334](/automation/WechatIMG1334.png)
 
 ## NewTask
 
