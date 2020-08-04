@@ -12,6 +12,13 @@ const note = [
         ]
     },
     {
+        title: '你不知道的css',
+        collapsable: false,
+        children: [
+            'cssNote/css'
+        ]
+    },
+    {
         title: 'TypeScript',
         collapsable: false,
         children: [

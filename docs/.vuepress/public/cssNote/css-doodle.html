@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+            --customUnit: 100%;
+        }
+        @supports(display: flex){
+            html,body {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+        body {
+            width: var(--customUnit);
+            height: var(--customUnit);
+            background:#666;
+            position: absolute;
+            bottom: 0;
+            top: 0;
+        }
+        
+    </style>
+    <script src="https://unpkg.com/css-doodle@0.8.5/css-doodle.min.js"></script>
+</head>
+<body>
+    
+
+    <css-doodle>
+        :doodle {@grid: 1 x 10 /50vmax;}
+        @size: calc( @index() * 10%) ;
+        @place-cell: center;
+        border-width: calc( @index() * 1vmin);
+        border-style: dashed;
+        border-radius: 50% ;
+        border-color:hsla(calc(20*@index()), 70%, 60%, calc(3/@index()*.8));
+        --d:@rand(30s,50s);
+        --rf:@rand(360deg);
+        --rt:calc(var(--rf))+@pick(1turn,-1turn);
+        animation: spin var(--d) cubic-bezier(.34,.79,.6,.23) infinite;
+        @keyframes spin {
+            from {
+                transform: rotate(var(--rf));
+            }
+            to {
+                transform: rotate(var(--rt));
+            }
+        }
+    </css-doodle>
+</body>
+</html>
