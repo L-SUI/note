@@ -22,6 +22,7 @@ const note = [
         title: 'TypeScript',
         collapsable: false,
         children: [
+            'typescript/typescript',
             'typescript/recursive_optimization',
             'typescript/functional_programming.md'
         ]
