@@ -2,25 +2,27 @@
 const note = [
     {
         title: '性能优化',
-        collapsable: false,
+        collapsable: true,
         children: [
             'optimization/性能优化一',
             'optimization/性能优化二',
             'optimization/性能优化三',
             'optimization/性能优化四',
+            'optimization/性能优化五',
             'optimization/SOLID',
         ]
     },
     {
         title: '你不知道的css',
-        collapsable: false,
+        collapsable: true,
         children: [
-            'cssNote/css'
+            'cssNote/css',
+            'cssNote/cssHoudini'
         ]
     },
     {
         title: 'TypeScript',
-        collapsable: false,
+        collapsable: true,
         children: [
             'typescript/typescript',
             'typescript/recursive_optimization',
@@ -29,7 +31,7 @@ const note = [
     },
     {
         title: 'Node',
-        collapsable: false,
+        collapsable: true,
         children: [
             'node/node',
             'node/pm2'
@@ -37,7 +39,7 @@ const note = [
     },
     {
         title: 'HTTP',
-        collapsable: false,
+        collapsable: true,
         children: [
             'http/http_1',
             'http/http_2'
@@ -45,7 +47,7 @@ const note = [
     },
     {
         title: 'Linux',
-        collapsable: false,
+        collapsable: true,
         children: [
             'linux/linux',
             'linux/linux_deploy',
@@ -56,35 +58,35 @@ const note = [
     },
     {
         title: 'OS',
-        collapsable: false,
+        collapsable: true,
         children: [
             'os/thread'
         ]
     },
     {
         title: 'Python',
-        collapsable: false,
+        collapsable: true,
         children: [
             'python/python爬虫'
         ]
     },
     {
         title: 'Java',
-        collapsable: false,
+        collapsable: true,
         children: [
             'java/java'
         ]
     },
     {
         title: 'Nginx',
-        collapsable: false,
+        collapsable: true,
         children: [
             'nginx/nginx'
         ]
     },
     {
         title: '项目工程化',
-        collapsable: false,
+        collapsable: true,
         children: [
             'engineering/ci_cd',
             'engineering/sonar',
@@ -92,14 +94,14 @@ const note = [
     },
     {
         title: '数据库',
-        collapsable: false,
+        collapsable: true,
         children: [
             'mysql/mysql'
         ]
     },
     {
         title: '常用工具',
-        collapsable: false,
+        collapsable: true,
         children: [
             'mac/command_line',
             'mac/homebrew',
@@ -109,7 +111,7 @@ const note = [
     },
     {
         title: '自动化',
-        collapsable: false,
+        collapsable: true,
         children: [
             'automation/jenkins',
             'automation/cli',
@@ -117,7 +119,7 @@ const note = [
     },
     {
         title: 'js相关',
-        collapsable: false,
+        collapsable: true,
         children: [
             'jsNote/base/函数柯里化curry',
             'jsNote/base/继承',
@@ -136,7 +138,7 @@ const note = [
     },
     {
         title: 'QA相关',
-        collapsable: false,
+        collapsable: true,
         children: [
             'QA/JavaScript&QA',
         ]
@@ -148,7 +150,7 @@ const note = [
 // const algorithm = [
 //     {
 //         title: '数组',
-//         collapsable: false,
+//         collapsable: true,
 //         children: [
 //             'array/count',
 //             'array/bisection_method',
@@ -157,14 +159,14 @@ const note = [
 //     },
 //     {
 //         title: '字符串',
-//         collapsable: false,
+//         collapsable: true,
 //         children: [
 //             'string/slide_window'
 //         ]
 //     },
 //     {
 //         title: '栈、队列、链表',
-//         collapsable: false,
+//         collapsable: true,
 //         children: [
 //             'sort/queue',
 //             'sort/linked_list',
@@ -173,7 +175,7 @@ const note = [
 //     },
 //     {
 //         title: '趣味算法',
-//         collapsable: false,
+//         collapsable: true,
 //         children: [
 //             'other/cards',
 //             'other/range_of_motion'
@@ -185,14 +187,14 @@ const note = [
 // const open_source = [
 //     {
 //         title: '开源贡献',
-//         collapsable: false,
+//         collapsable: true,
 //         children: [
 //             '',
 //         ]
 //     },
 //     {
 //         title: 'TinyDB',
-//         collapsable: false,
+//         collapsable: true,
 //         children: [
 //             'github/indexeddb',
 //             'github/tinydb_docapi'
@@ -200,14 +202,14 @@ const note = [
 //     },
 //     {
 //         title: 'Simple-dark',
-//         collapsable: false,
+//         collapsable: true,
 //         children: [
 //             'vscode/Simple-dark'
 //         ]
 //     },
 //     {
 //         title: 'tscli',
-//         collapsable: false,
+//         collapsable: true,
 //         children: [
 //             'cli/tscli'
 //         ]

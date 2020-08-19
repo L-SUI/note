@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+//      1
+//   2     3 
+// 4   5
+
+// 从根到叶子共3条：1->2->4, 1->2->5, 1->3
+
+// 构成的数字为124，125，13，求和124 + 125 + 13 = 262即为所求
+function context(tree) {
+    let arr = []
+    function aad (node,current) {
+        let str = current
+        let value = node.value
+        str += value
+        if (node.left==null && node.right==null) {
+            arr.push(str)
+        }else if(node.left==null && node.right!=null) {
+            arr.push(str)
+            aad(node.right,str)
+        }else if(node.left!=null && node.right==null){
+            arr.push(str)
+            aad(node.left,str)
+        }else {
+            aad(node.left,str)
+            aad(node.right,str)
+        }
+    }
+    aad(tree,'')
+    let i=0;
+    let result = 0;
+    while(i<arr.length) {
+        result+= 1*arr[i]
+        i++
+    }
+    
+    return result
+}
+console.log(context({
+    value:1,
+    left:{
+        value:2,
+        left:{
+            value:4,
+            left:null,
+            right:null
+        },
+        right:{
+            value:5,
+            left:null,
+            right:null
+        }
+    },
+    right:{
+        value:3,
+        left:null,
+        right:null
+    }
+}))
+
+</script>
+</body>
+</html>
