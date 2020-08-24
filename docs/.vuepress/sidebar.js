@@ -12,12 +12,19 @@ const note = [
             'optimization/SOLID',
         ]
     },
+    {  
+        title: '源码解析',
+        collapsable: true,
+        children: [
+            'sourceCode/vue2',
+        ]
+    },
     {
         title: '你不知道的css',
         collapsable: true,
         children: [
             'cssNote/css',
-            'cssNote/cssHoudini'
+            'cssNote/cssHoudini',
         ]
     },
     {
