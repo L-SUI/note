@@ -28,6 +28,8 @@ redux其实是一个比较典型的函数式编程的应用实例：
 
 5. middleware -> IO functor （解决异步和脏操作）
 
+[点击查看函数式编程](/note/typescript/functional_programming)
+
 那么，接下来我们去一步一步实现一个redux，首先看一下目录结构：
 
 - applyMiddleware.js
