@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>redux</title>
+  </head>
+  <body>
+    <script type="module">
+      import { createStore, combineReducers } from './redux/index.js';
+      import counterReducer from './reducers/counter.js';
+      import infoReducer from './reducers/info.js';
+      const reducer = combineReducers({
+        counter: counterReducer,
+      });
+      const store = createStore(reducer);
+      const nextReducer = combineReducers({
+        counter: counterReducer,
+        info: infoReducer,
+      });
+      store.replaceReducer(nextReducer);
+      store.subscribe(() => {
+        const state = store.getState();
+        console.log(state.counter.count);
+        console.log(state.info.name);
+      });
+      store.dispatch({
+        type: 'INCREMENT',
+      });
+      store.dispatch({
+        type: 'SET_NAME',
+        name: '京程一灯🏮',
+      });
+    </script>
+  </body>
+</html>

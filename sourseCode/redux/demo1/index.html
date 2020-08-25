@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>redux</title>
+  </head>
+  <body>
+    <script type="module">
+      import { createStore } from './redux/index.js';
+      let initState = {
+        counter: {
+          count: 0,
+        },
+        info: {
+          name: '',
+          description: '',
+        },
+      };
+      const store = createStore(initState);
+      store.subscribe(() => {
+        const state = store.getState();
+        console.log(`${state.info.name} -- ${state.info.description} `);
+      });
+      store.subscribe(() => {
+        const state = store.getState();
+        console.log(state.counter.count);
+      });
+      store.changeState({
+        ...store.getState(),
+        info: {
+          name: '京程一灯',
+          description: '我们一起冲击月薪3万',
+        },
+      });
+      store.changeState({
+        ...store.getState(),
+        counter: {
+          count: 1,
+        },
+      });
+    </script>
+  </body>
+</html>

@@ -17,6 +17,7 @@ const note = [
         collapsable: true,
         children: [
             'sourceCode/vue2',
+            'sourceCode/redux',
         ]
     },
     {

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>redux</title>
+  </head>
+  <body>
+    <script type="module">
+      import exceptiontimeMiddleware from './middlewares/exceptiontimeMiddleware.js';
+      import loggerMiddleware from './middlewares/loggerMiddleware.js';
+      import timeMiddleware from './middlewares/timeMiddleware.js';
+      //如上是中间件
+      import { createStore, combineReducers } from './redux/index.js';
+      import counterReducer from './reducers/counter.js';
+      import infoReducer from './reducers/info.js';
+      const reducer = combineReducers({
+        counter: counterReducer,
+        info: infoReducer,
+      });
+      const store = createStore(reducer);
+      //初始化中间件
+      const next = store.dispatch;
+      const logger = loggerMiddleware(store);
+      const exception = exceptiontimeMiddleware(store);
+      const time = timeMiddleware(store);
+      store.dispatch = exception(time(logger(next)));
+
+      store.subscribe(() => {
+        const state = store.getState();
+        console.log(state.counter.count);
+        console.log(state.info.name);
+      });
+      store.dispatch({
+        type: 'INCREMENT',
+      });
+      store.dispatch({
+        type: 'SET_NAME',
+        name: '京程一灯🏮',
+      });
+    </script>
+  </body>
+</html>

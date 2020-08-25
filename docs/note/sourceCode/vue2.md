@@ -688,7 +688,7 @@ watcher==>vue component，一。个watcher对应一个组件
 
 具体实现的代码，请点击下面链接查看，比较简化版的，便于理解。
 
-[查看源代码](https://github.com/L-SUI/note/tree/master/vue-dome)
+[查看源代码](https://github.com/L-SUI/note/tree/master/sourseCode/vue-dome)
 
 ## Batch Update
 

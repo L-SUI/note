@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>redux</title>
+  </head>
+  <body>
+    <script type="module">
+      import { createStore } from './redux/index.js';
+      import reducer from './reducer.js';
+      let initState = {
+        count: 0,
+      };
+      const store = createStore(reducer, initState);
+      store.subscribe(() => {
+        const state = store.getState();
+        console.log(state.count);
+      });
+      store.dispatch({
+        type: 'INCREMENT',
+      });
+      store.dispatch({
+        type: 'DECREMENT',
+      });
+    </script>
+  </body>
+</html>
