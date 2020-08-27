@@ -1163,6 +1163,8 @@ export const readonlyHandlers: ProxyHandler<any> = {
 
 梳理一下上面的流程
 
+![dataResponseArchitecture2](/sourceCode/vue3/dataResponseArchitecture2.png)
+
 ```
 reactive ==>把数据处理成为响应式数据
     proxy
@@ -1411,7 +1413,47 @@ export type UnwrapRef<T> = {
 
 ![ref](/sourceCode/vue3/ref.png)
 
-### 再来看一下流程
+## vnode
 
-![dataResponseArchitecture2](/sourceCode/vue3/dataResponseArchitecture2.png)
+![1598540303402_ECEB2EA2-E1E6-4426-A0BD-F07543713AC6](/sourceCode/vue3/1598540303402_ECEB2EA2-E1E6-4426-A0BD-F07543713AC6.png)
+
+```js
+<div>
+    <p>foo</p>
+    <p>{{ bar }}</p>
+</div>
+
+
+
+
+const vnode = {
+    tag: 'div',
+    children: [
+        { tag: 'p', children: 'foo' },
+        { tag: 'div', children: [
+            { tag: 'p', children: ctx.bar }
+        ] 
+        }, 
+    ],
+    //v3会增加一个，动态节点添加到dynamicChildren，之后diff直接对比这里
+    dynamicChildren:[
+        { tag: 'p', children: ctx.bar }, 
+    ]
+}
+//使用到了BlockTree   上图中_createBlock
+```
+
+```js
+import { createVNode as _createVNode, toDisplayString as _toDisplayString, Fragment as _Fragment, openBlock as _openBlock, createBlock as _createBlock } from "vue"
+
+export function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (_openBlock(), _createBlock(_Fragment, null, [
+    _createVNode("div", { onClick: _ctx.go }, "Hello World!", 8 /* PROPS */, ["onClick"]),
+    _createVNode("div", { onClick: _ctx.go }, _toDisplayString(_ctx.msg), 9 /* TEXT, PROPS */, ["onClick"])
+  ], 64 /* STABLE_FRAGMENT */))
+}
+
+// Check the console for the AST
+//对比完成靶向更新
+```
 
