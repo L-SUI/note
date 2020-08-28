@@ -97,6 +97,7 @@ Lerna:一个用于管理具有多个包的JavaScript项目的工具。
 
 首先看一下目录结构
 
+```
 ├── LICENSE 
 ├── README.md
 ├── __tests__
@@ -105,6 +106,7 @@ Lerna:一个用于管理具有多个包的JavaScript项目的工具。
 ├── index.js
 ├── package.json
 └── src
+```
 
 主要功能文件在src下，这边想先说的是tests文件夹。vue3源码中每个文件夹下面都有tests文件夹，保存了一些测试例子，可以用jest直接跑一下试试搭配源码去理解。
 
