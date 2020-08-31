@@ -18,6 +18,7 @@ const note = [
         children: [
             'sourceCode/vue2',
             'sourceCode/vue3',
+            'sourceCode/react',
             'sourceCode/redux',
         ]
     },
