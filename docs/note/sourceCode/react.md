@@ -1,6 +1,16 @@
 # React16.13源码解析
 
-emmm，全是函数调函数，比较绕
+## 资料分享
+
+React  基础：[https://zh-hans.reactjs.org/docs/react-component.html](https://zh-hans.reactjs.org/docs/react-component.html)
+
+react hooks 基础:[https://zh-hans.reactjs.org/docs/hooks-intro.html](https://zh-hans.reactjs.org/docs/hooks-intro.html)
+
+react调度机制：[http://www.7km.top/main/scheduler#scheduleupdateonfiber](http://www.7km.top/main/scheduler#scheduleupdateonfiber)
+
+requestIdleCallback和requestAnimationFrame详解: [https://juejin.im/post/6844903848981577735](https://juejin.im/post/6844903848981577735)
+
+messageChannel是什么：[https://www.jianshu.com/p/4f07ef18b5d7](https://www.jianshu.com/p/4f07ef18b5d7)
 
 ## React.children.map
 
