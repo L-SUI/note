@@ -19,6 +19,7 @@ const note = [
             'sourceCode/vue2',
             'sourceCode/vue3',
             'sourceCode/react',
+            'sourceCode/reactHooks',
             'sourceCode/redux',
         ]
     },
