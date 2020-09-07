@@ -11,7 +11,21 @@
         return res
     }
 
-    Array.prototype.reduce = function (fn) {
-        
+    Array.prototype.reduce = function (callback,accumulator) {
+        const self = this
+        let idx = null
+        if(!accumulator) {
+            accumulator = self[0]
+            idx = 1
+        }
+        for(let i = idx; i < self.length; i ++) {
+            accumulator = callback(accumulator, self[i], i, self)  
+        }
+        return accumulator
     }
+    var a = [1,2,3,4,5]
+    a.reduce((acc, cur) => {
+        console.log(cur)
+        return acc + cur
+    })
 ```

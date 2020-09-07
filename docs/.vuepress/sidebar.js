@@ -29,6 +29,8 @@ const note = [
         children: [
             'cssNote/css',
             'cssNote/cssHoudini',
+            'cssNote/css_matrix',
+            'cssNote/css_split',
         ]
     },
     {
