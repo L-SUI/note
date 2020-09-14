@@ -21,6 +21,7 @@ const note = [
             'sourceCode/react',
             'sourceCode/reactHooks',
             'sourceCode/redux',
+            'sourceCode/applets',
         ]
     },
     {

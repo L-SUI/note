@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+</body>
+<script>
+// 实现一个方法判断 html 中的标签是否闭合
+let htmlString =`
+    <div>
+        <p>
+        <h1></h1>
+        </br>
+        </br>
+        <ul>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+`
+function closeTag(str) {
+    let re0 = /<!DOCTYPE html>/g;
+    let re1 = /<\w+>/g;
+    let re2 = /<\/\w+>/g;
+    let re3 = /<\/br>/g;
+    let res = 0;
+    let count = 0;
+    let arr0 = str.match(re0);
+    let arr1 = str.match(re1);
+    let arr2 = str.match(re2);
+    let arr3 = str.match(re3);
+    count = arr0!=null?count-1:0;
+    count = arr1!=null?count+arr1.length:count+0;
+    count = arr2!=null?count-arr2.length:count-0;
+    count = arr3!=null?count+arr3.length:count+0;
+    return !count
+}
+console.log(closeTag(htmlString))
+</script>
+</html>
