@@ -16,3 +16,46 @@
 
 网页开发者在开发网页的时候，只需要使用到浏览器，并且搭配上一些辅助工具或者编辑器即可。小程序的开发则有所不同，需要经过申请小程序帐号、安装小程序开发者工具、配置项目等等过程方可完成。
 
+## 文章分享
+
+- [小程序架构](https://chris118.github.io/2018/04/10/2/)
+
+-  [微信小程序架构原理](http://eux.baidu.com/blog/fe/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%9E%B6%E6%9E%84%E5%8E%9F%E7%90%86)
+
+- [基于vuejs的小程序引擎底层框架实现](https://zhaomenghuan.js.org/blog/what-is-emp.html#微信小程序架构)
+
+- [小程序原理等文章](https://zhaomenghuan.js.org/note/miniprogram/awesome-miniprogram.html)
+
+## 基本架构
+
+小程序主要分为**逻辑层**和**视图层**，还有就是他们的原生部分
+
+![basicStructure](/sourceCode/applets/basicStructure.png)
+
+- 视图层主要负责页面的渲染
+
+- 逻辑层负责js的执行。
+
+他们之间通过event和data来通信。通信是有微信客户端（native）做的一层中转；
+
+然后也可以通过jsBridge来调用原生的api，比如什么相机、扫码等功能。
+
+这个视图层，最后我们打包出来的代码，就是html和css，在这里面运行，视图层目前使用 WebView 作为渲染载体。
+
+逻辑层是由独立的 JsCore 作为js的运行环境,所以他和浏览器不一样，只有一些js对应的方法，不能直接操作dom和获取dom，中间都需要通信这一层中转，在架构上，WebView 和 JavascriptCore 都是独立的模块，并不具备数据直接共享的通道。
+
+当前，视图层和逻辑层的数据传输，实际上通过两边提供的 `evaluateJavascript` 所实现。
+
+即用户传输的数据，需要将其转换为字符串形式传递，同时把转换后的数据内容拼接成一份 JS 脚本，再通过执行 JS 脚本的形式传递到两边独立环境。
+
+而 `evaluateJavascript` 的执行会受很多方面的影响，数据到达视图层并不是实时的。
+
+由于这之间他们是彼此独立的，是基于消息驱动来渲染的，所以不会阻塞页面；
+
+所以这就不会造成渲染的阻塞，我的渲染不会影响你的js逻辑，js的执行也不会柱塞渲染的过程；
+
+比如你在发送一些请求的时候，这种一般是经由native转发；
+
+![structure](/sourceCode/applets/structure.png)
+
+## 未完待续

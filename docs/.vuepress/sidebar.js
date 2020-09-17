@@ -35,6 +35,22 @@ const note = [
         ]
     },
     {
+        title:'数据结构与算法',
+        collapsable: true,
+        children: [
+            'algorithm/algorithm',
+            'algorithm/binaryTree',
+            'algorithm/graph',
+            'algorithm/bubbling',
+            'algorithm/insert',
+            'algorithm/merge',
+            'algorithm/quick',
+            'algorithm/select',
+            'algorithm/shell',
+            'algorithm/advance',
+        ]
+    },
+    {
         title: 'TypeScript',
         collapsable: true,
         children: [
