@@ -47,6 +47,16 @@ function inOrder (node) {
         inOrder(node.right)
     }
 }
+function levelOrder(node,depth) {
+    if (root !== null) {
+        if (!res[depth]) {
+          res[depth] = []
+        }
+        levelOrder(root.left, depth + 1)
+        res[depth].push(root.val)
+        levelOrder(root.right, depth + 1)
+    }
+}
 function getSmall (root) {
     let current = this.root || root;
     while(current.left!=null) {
