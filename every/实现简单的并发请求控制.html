@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 实现一个n个请求并发的sendRequest(urls, max, callback)函数
+// 请实现下的函数，可以批量请求数据，所有的url地址在urls参数中，同时可以
+// 通过max参数控制请求的并发度，当所有请求结束之后，需要执行callback回调函数，
+// 发请求的函数可以直接使用fetch即可
+
+class sendRequest {
+    constructor(urls, max, callback){
+        this.urls = urls;
+        this.max = max;
+        this.callback = callback;
+        this.result = [];
+        this.sendFetch()
+    }
+    async sendFetch(){
+        let i = 0;
+        let arr = [];
+        while (i <max) {
+            if (this.urls.length>0){
+                arr.push(fetch(this.urls.shift()));
+                i++
+            }else {
+                break;
+            }
+        }
+        console.log(arr)
+        let values = await Promise.all(arr)
+        console.log(values)
+        this.result.push(...values)
+        if(this.urls.length>0){
+            this.sendFetch();
+        }else{
+            this.callback(this.result)
+        }
+    }
+}
+let urls = ['./sendRequest.json','./sendRequest.json','./sendRequest.json','./sendRequest.json'];
+let max = 3;
+let callback = (result) =>{console.log(JSON.stringify(result));}
+new sendRequest(urls, max, callback)
+
+</script>
+</html>
