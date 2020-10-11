@@ -57,6 +57,26 @@ function levelOrder(node,depth) {
         levelOrder(root.right, depth + 1)
     }
 }
+function sequence (root) {
+    if (root ==null) return null;
+    let res =[];
+    let queue = [root];
+    while(queue.length>0){
+        let len = queue.length
+        let pre = null;
+        for(let i =0;i<len;i++){
+            let current = queue.shift()
+            if(current.left){
+                queue.push(current.left)
+            }
+            if(current.right){
+                queue.push(current.right)
+            }
+            res.push(current.val)
+        }
+    }
+    return res
+}
 function getSmall (root) {
     let current = this.root || root;
     while(current.left!=null) {
