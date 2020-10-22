@@ -47,7 +47,7 @@ function inOrder (node) {
         inOrder(node.right)
     }
 }
-function levelOrder(node,depth) {
+function levelOrder(root,depth) {
     if (root !== null) {
         if (!res[depth]) {
           res[depth] = []

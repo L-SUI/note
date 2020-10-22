@@ -12,7 +12,7 @@ class CreateStore {
         return this.state;
     }
     dispatch(action) {
-        this.state = this.reducer(this.state,action)
+        this.state = this.reducer(this.getState(),action)
         for (let i = 0; i <this.listeners.length; i++){
             this.listeners[i]()
         }

@@ -162,7 +162,7 @@ Lerna:一个用于管理具有多个包的JavaScript项目的工具。
 
 上面state已经变成了响应式数据，当state发生了变化是，`effect(fn)`会调用,看一下执行结果
 
-![1598510425821_67688896-0B51-4CB2-9CD7-3BE1EADB44B4](/Users/liuxiaodong/Desktop/blog/note/docs/.vuepress/public/sourceCode/vue3/1598510425821_67688896-0B51-4CB2-9CD7-3BE1EADB44B4.png)
+![1598510425821_67688896-0B51-4CB2-9CD7-3BE1EADB44B4](/sourceCode/vue3/1598510425821_67688896-0B51-4CB2-9CD7-3BE1EADB44B4.png)
 
 可以看出来，`proxy`是对目标对象进行了代理（劫持），跟之前的object.definproperty区别是他可以监听新增的，他是代理了对这个对象的操作。当然，他也有缺点，他只能代理一层的。层级深了就处理不了了。所以我们看看源码里是怎么处理的。
 

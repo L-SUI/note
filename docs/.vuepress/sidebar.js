@@ -173,7 +173,13 @@ const note = [
             'QA/JavaScript&QA',
         ]
     },
-    
+    {
+        title: '文章收藏',
+        collapsable: true,
+        children: [
+            'article/article',
+        ]
+    },
 ]
 
 // 算法

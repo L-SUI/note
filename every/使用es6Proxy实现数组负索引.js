@@ -10,5 +10,5 @@ let proxy = new Proxy(arr,{
     }
 })
 console.log(proxy[-1])
-console.log(proxy[2])
+console.log(proxy[-2])
 console.log(proxy[4])
