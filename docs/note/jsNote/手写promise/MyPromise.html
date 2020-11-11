@@ -20,7 +20,7 @@
         //   处理 prmomise 对象
         if (x instanceof MyPromise) {
           if (x.state === PENDING) {
-            x.then(y => {
+            x.then((y) => {
               promiseResolutionProcedure(promise2, y, resolve, reject);
             }, reject);
           } else {
@@ -32,7 +32,7 @@
         //   判断 thenable 对象
         if ((typeof x === "object" || typeof x === "function") && x !== null) {
           if (typeof x.then === "function") {
-            x.then(y => {
+            x.then((y) => {
               promiseResolutionProcedure(promise2, y, resolve, reject);
             }, reject);
           } else {
@@ -60,10 +60,10 @@
 
             for (let i = 0; i < promiseArray.length; i++) {
               promiseArray[i].then(
-                data => {
+                (data) => {
                   processResult(i, data);
                 },
-                err => {
+                (err) => {
                   // 处理失败
                   reject(err);
                 }
@@ -77,7 +77,7 @@
           this.resolvedCallbacks = [];
           this.rejectedCallbacks = [];
 
-          const resolve = val => {
+          const resolve = (val) => {
             if (
               (typeof val === "object" || typeof val === "function") &&
               val.then
@@ -90,11 +90,11 @@
                 this.state = FULFILLED;
                 this.value = val;
                 // 执行所有的 then 方法
-                this.resolvedCallbacks.map(fn => fn());
+                this.resolvedCallbacks.map((fn) => fn());
               }
             });
           };
-          const reject = val => {
+          const reject = (val) => {
             if (
               (typeof val === "object" || typeof val === "function") &&
               val.then
@@ -107,15 +107,16 @@
                 this.value = val;
                 this.state = REJECTED;
                 // 执行所有的 then 方法
-                this.rejectedCallbacks.map(fn => fn());
+                this.rejectedCallbacks.map((fn) => fn());
               }
             });
           };
           fn(resolve, reject);
         }
+        
         then(
-          onFulfilled = val => val,
-          onRejected = err => {
+          onFulfilled = (val) => val,
+          onRejected = (err) => {
             throw new Error(err);
           }
         ) {
@@ -284,11 +285,11 @@
       });
 
       setTimeout(() => {
-        promise.then(data => {
+        promise.then((data) => {
           console.log("step12:", data);
         });
 
-        promise.then(data => {
+        promise.then((data) => {
           console.log("step12:", data);
         });
       }, 1000);

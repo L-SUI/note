@@ -165,6 +165,7 @@ const note = [
             'jsNote/base/手写一个map和reduce',
             'jsNote/base/手写一个new操作符',
             'jsNote/base/LRU缓存算法',
+            'jsNote/base/手写Promise',
         ]
     },
     {
