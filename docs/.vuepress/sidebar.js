@@ -22,6 +22,7 @@ const note = [
             'sourceCode/reactHooks',
             'sourceCode/redux',
             'sourceCode/applets',
+            'sourceCode/koa',
         ]
     },
     {

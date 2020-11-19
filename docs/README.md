@@ -5,8 +5,8 @@ heroText: Memory space
 actionText: 快速阅读 →
 actionLink: /note/
 features:
-- title: 长路漫漫
-  details: 道阻且长。
+- title: 只要开始
+  details: 虽晚不迟
 - title: 不积跬步
   details: 无以至千里
 - title: 开源贡献
