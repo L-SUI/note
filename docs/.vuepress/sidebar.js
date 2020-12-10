@@ -9,6 +9,7 @@ const note = [
             'optimization/性能优化三',
             'optimization/性能优化四',
             'optimization/性能优化五',
+            'optimization/性能优化总结',
             'optimization/SOLID',
         ]
     },
@@ -73,7 +74,8 @@ const note = [
         collapsable: true,
         children: [
             'http/http_1',
-            'http/http_2'
+            'http/http_2',
+            'http/http_head',
         ]
     },
     {
