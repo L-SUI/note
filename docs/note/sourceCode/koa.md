@@ -1,4 +1,14 @@
-# 实现koa
+# Koa2
+
+Koa 是一个新的 web 框架，由 Express 幕后的原班人马打造， 致力于成为 web 应用和 API 开发领域中的一个更小、更富有表现力、更健壮的基石。 通过利用 async 函数，Koa 帮你丢弃回调函数，并有力地增强错误处理。 Koa 并没有捆绑任何中间件， 而是提供了一套优雅的方法，帮助您快速而愉快地编写服务端应用程序。
+
+[https://koa.bootcss.com/](https://koa.bootcss.com/)
+
+koa2封装了原生的node http模块，koa的Context吧Node的Request对象和Response对象封装到单个对象中，并且暴露给中间件等回调函数
+
+最主要的核心是 **中间件机制洋葱模型**
+
+## 源码
 
 源码中主要就是四个文件
 
@@ -7,58 +17,15 @@
 - [request.js](https://github.com/koajs/koa/blob/master/lib/request.js)
 - [response.js](https://github.com/koajs/koa/blob/master/lib/response.js)
 
-## 简单的实现一个koa
+![WechatIMG80](/sourceCode/koa/WechatIMG80.png)
 
-```js
-const Emitter = require('events');
-const http = require('http');
-module.exports = class Application extends Emitter {
-   constructor(options) {
-    super();
-    this.middlewares = [];
-  }
-  use (middleware) {
-    this.middlewares.push(middleware)
-  }
-  // 最终要去输出的内容
-  callback () {
-    return  (req,res)=>{
-      let fn = this.compose()
-      const ctx = {};
-      const onerror = this.onerror
-      return fn(ctx).then(()=>{
-        res.end('')
-      }).catch(onerror)
-    }
-  }
-  // 将所有的middleware进行递归合并(源码中使用的递归),这里用循环实现的
-  compose () {
-    return async ()=>{
-      function createNext (middleware,oldNext) {
-        return async ()=>{
-           await  middleware(ctx,oldNext)
-        }
-      }
-      let len = this.middlewares.length;
-      let next = async =>Promise.resolve()//初始值，洋葱模型的中心
-      for(let i=len-1;i>=0;i--){
-        let currentMiddleware = this.middlewares[i]
-        next = createNext(currentMiddleware,next)
-      }
-      await next();
-    }
-  }
-  listen(...args) {
-    const server = http.createServer(this.callback());
-    return server.listen(...args);
-  }
-  onerror (err,ctx) {
-    this.emit(err)
-  }
-}
-```
+## 中间件机制洋葱模型
 
-## koa-compose源码
+![WechatIMG81](/sourceCode/koa/WechatIMG81.jpeg)
+
+通过use()注册多个中间件放入数组中，然后从外层开始往内执行，遇到next()后进入下一个中间件，当所有的中间件执行完后，开始返回，一次执行中间件中未执行的部分，整体流程就是递归处理
+
+## koa-compose
 
 ```js
 'use strict'
@@ -110,4 +77,62 @@ function compose (middleware) {
   }
 }
 ```
+
+
+
+## 简单的实现一个koa
+
+```js
+const EventEmitter = require('events');
+const http = require('http');
+
+class Application extends EventEmitter {
+    constructor(){
+        super();
+        this.middlewares = [];
+    }
+    use(middleware){
+        this.middlewares.push(middleware);
+    }
+    listen(...args) {
+        const server = http.createServer(this.callback());
+        server.listen(...args);
+    }
+    callback() {
+        return (req,res) => {
+            // console.log(req,res);
+            // res.end('hello memory');
+            let fn = this.compose()
+            const ctx = {};
+            const onerror = this.onerror
+            return fn(ctx).then(()=>{
+                res.end('hello memory')
+            }).catch(onerror)
+        }
+    }
+    compose() {
+        return async (ctx)=>{
+            function createNext (middleware,oldNext) {
+              return async ()=>{
+                 await  middleware(ctx,oldNext);
+              }
+            }
+            let len = this.middlewares.length;
+            let next = async ()=>Promise.resolve();//初始值，洋葱模型的中心
+            for(let i=len-1;i>=0;i--){
+              let currentMiddleware = this.middlewares[i]
+              next = createNext(currentMiddleware,next)
+            }
+            await next();
+        }
+    }
+    onerror (err,ctx) {
+        // this.emit(err)
+        console.log(err)
+    }
+}
+
+module.exports = Application;
+```
+
 
