@@ -43,5 +43,28 @@
     }
     nums1.sort(function(a,b){return a-b})
 };
+
+var merge = function(nums1, m, nums2, n) {
+    let len = nums1.length-1;
+    m--,n--
+    while(m>-1&&n>-1){
+        const left = nums1[m],right = nums2[n];
+        if(left>right){
+            nums1[len]=left;
+            m--
+            len--
+        }else{
+            nums1[len]=right;
+            n--
+            len--
+        }
+    }
+    if(n>-1){
+        while(len>-1){
+            nums1[len] = nums2[len];
+            len--
+        }
+    }
+};
 </script>
 </html>

@@ -48,3 +48,40 @@ var searchMatrix = function(matrix, target) {
         }
     }
 };
+
+/**
+ * @param {number[][]} matrix
+ * @param {number} target
+ * @return {boolean}
+ */
+ var searchMatrix = function(matrix, target) {
+    let index=0;
+    while(index<matrix.length){
+        const curr = matrix[index][0]
+        if(curr==target){
+            return true
+        }else if(curr<target){
+            index++
+            continue
+        }else{
+            break;
+        }
+    }
+    index--
+    if(index==-1) return false;
+    let j = 0;
+    while(j<matrix[index].length){
+        const curr = matrix[index][j]
+        console.log(curr)
+        
+        if(curr==target){
+            return true
+        }else if(curr<target){
+            j++
+            continue
+        }else{
+            return false
+        }
+    }
+    return false
+};

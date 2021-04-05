@@ -123,6 +123,7 @@ const note = [
         children: [
             'engineering/ci_cd',
             'engineering/sonar',
+            'engineering/小程序系列之-工程化',
         ]
     },
     {
