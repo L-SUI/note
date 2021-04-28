@@ -50,6 +50,7 @@ const note = [
             'algorithm/select',
             'algorithm/shell',
             'algorithm/advance',
+            'algorithm/object',
         ]
     },
     {

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body></body>
+  <script>
+    /*
+     * 1.数字属性被最先打印出来了，并且是按照数字大小的顺序打印的
+     * 2.设置的字符串属性依然是按照之前的设置顺序打印的
+     * 原因:ECMAScript 规范中定义了数字属性应该按照索引值大小升序排列，字符串属性根据创建时的顺序 升序排列
+     */
+    // function Foo() {
+    //     this[100] = 'test-100'
+    //     this[1] = 'test-1'
+    //     this["B"] = 'bar-B'
+    //     this[50] = 'test-50'
+    //     this[9] = 'test-9'
+    //     this["A"] = 'bar-A'
+    //     this[8] = 'test-8'
+    //     this[3] = 'test-3'
+    //     this[5] = 'test-5'
+    //     this["C"] = 'bar-C'
+    // }
+    // var bar = new Foo()
+    // for (key in bar) {
+    //     console.log(`index:${key} value:${bar[key]}`)
+    // }
+    // console.log(bar);
+  </script>
+
+  <script>
+    // function Foo(element_num,property_num) {
+    //   //添加可索引属性
+    //   for (let i = 0; i < element_num; i++) {
+    //     this[i] = `element${i}`;
+    //   }
+    //   //添加常规属性
+    //   for (let i = 0; i < property_num; i++) {
+    //     let ppt = `property${i}`;
+    //     this[ppt] = ppt;
+    //   }
+    // }
+    // var bar = new Foo(10, 11);
+  </script>
+
+  <script>
+    function init() {
+      var obj = {
+        0: "item0",
+        1: "item1",
+        2: "item2",
+        3: "item3",
+        4: "item4",
+        5: "item5",
+        obj1: "item-obj1",
+        obj2: "item-obj2",
+        obj3: "item-obj3",
+        obj4: "item-obj4",
+        obj5: "item-obj5",
+        obj6: "item-obj6",
+        obj7: "item-obj7",
+        obj8: "item-obj8",
+        obj9: "item-obj9",
+        obj10: "item-obj10",
+        obj11: "item-obj11",
+        obj12: "item-obj11",
+        obj13: "item-obj11",
+        obj14: "item-obj11",
+        obj15: "item-obj11",
+        obj16: "item-obj11",
+        obj17: "item-obj11",
+        obj18: "item-obj11",
+        obj19: "item-obj11",
+      };
+      return function apple() {
+        console.log(obj);
+      };
+    }
+    var result = init();
+    result();
+  </script>
+</html>
