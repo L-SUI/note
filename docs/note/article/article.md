@@ -27,3 +27,21 @@
 
 - [原型链总结](https://github.com/LiLixikun/webBlog/blob/master/JS/md/%E5%8E%9F%E5%9E%8B-%E5%8E%9F%E5%9E%8B%E9%93%BE.md)
 
+## React
+
+- [React Scheduler 时间分片为什么选择使用 MessageChannel 实现](https://mp.weixin.qq.com/s/eMCaifjBebsq5d-qN0Sshg)
+
+- [MessageChannel是什么，怎么使用？](https://www.jianshu.com/p/4f07ef18b5d7)
+
+## Electron
+
+[项目参考：视频截取react]( https://github.com/mifi/lossless-cut)
+
+项目参考：[图片压缩](https://github.com/zhukunpenglinyutong/electron-tiny-img)
+
+>  下载 ELECTRON_MIRROR="https://cdn.npm.taobao.org/dist/electron/" npm install -D electron
+
+## 模块化
+
+[前端模块化的十年征程](https://mp.weixin.qq.com/s/kZ4kBIENMRdH6W7fOgW1qA)
+
