@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>152. 乘积最大子数组</title>
-</head>
-<body>
-    
-</body>
-<script>
+
 // 给你一个整数数组 nums ，请你找出数组中乘积最大的连续子数组（该子数组中至少包含一个数字），并返回该子数组所对应的乘积。
 
 // 示例 1:
@@ -54,25 +44,20 @@
 };
 // console.log(maxProduct([2,3,-2,4]))
 // console.log(maxProduct([0,2]))
-console.log(maxProduct([2,-1,1,1]))
+// console.log(maxProduct([2,-1,1,1]))
 
 var maxProduct = function(nums) {
-  let max = nums[0];
-  let min = nums[0];
-  let res = nums[0];
-
-  for (let i = 1; i < nums.length; i++) {
-    let tmp = min;
-    min = Math.min(nums[i], Math.min(max * nums[i], min * nums[i])); // 取最小
-    max = Math.max(nums[i], Math.max(max * nums[i], tmp * nums[i])); /// 取最大
-    res = Math.max(res, max);
-  }
-  return res;
+    let max = min = res = nums.shift();
+    for (let i = 0; i < nums.length; i++) {
+        let tmp = min,curr = nums[i];
+        min = Math.min(curr, Math.min(max * curr, min * curr)); 
+        max = Math.max(curr, Math.max(max * curr, tmp * curr));
+        res = Math.max(res, max);
+    }
+    return res;
 };
 
-// 作者：fe-lucifer
-// 链接：https://leetcode-cn.com/problems/maximum-product-subarray/solution/dong-tai-gui-hua-152-cheng-ji-zui-da-zi-shu-zu-by-/
-// 来源：力扣（LeetCode）
-// 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
-</script>
-</html>
+
+console.log(maxProduct([2,3,-2,4,5]))
+// console.log(maxProduct([0,2]))
+// console.log(maxProduct([2,-1,1,1]))
