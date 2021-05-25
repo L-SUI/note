@@ -20,19 +20,18 @@ const algorithm = {
 }
 
 // more
-// const more = {
-//     text: '了解更多',
-//     ariaLabel: '菜单',
-//     items: [
-//         {
-//             text: '转载',
-//             link: '/blog/',
-//         }
-//     ]
-// }
+const more = {
+    text: '友邻',
+    items: [
+        {
+            text: '朱昆鹏',
+            link: 'http://notes.itzkp.com/',
+        }
+    ]
+}
 
 module.exports = [
     note,
     algorithm,
-    // more
+    more
 ]

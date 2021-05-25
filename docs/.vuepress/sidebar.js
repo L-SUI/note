@@ -54,6 +54,13 @@ const note = [
         ]
     },
     {
+        title:'设计模式',
+        collapsable: true,
+        children: [
+            'design/introduce',
+        ]
+    },
+    {
         title: 'TypeScript',
         collapsable: true,
         children: [
