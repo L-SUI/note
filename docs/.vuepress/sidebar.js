@@ -58,6 +58,8 @@ const note = [
         collapsable: true,
         children: [
             'design/introduce',
+            'design/singleton',
+            'design/factory',
         ]
     },
     {
