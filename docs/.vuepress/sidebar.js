@@ -210,7 +210,7 @@ const note = [
 //         ]
 //     },
 //     {
-//         title: '栈、队列、链表',
+//         title: '栈、队列、',
 //         collapsable: true,
 //         children: [
 //             'sort/queue',

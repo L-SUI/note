@@ -45,3 +45,9 @@
 
 [前端模块化的十年征程](https://mp.weixin.qq.com/s/kZ4kBIENMRdH6W7fOgW1qA)
 
+## sparkplug
+
+[v8博客：https://v8.dev/blog/sparkplug](https://v8.dev/blog/sparkplug)
+
+[上面博客译文](https://www.infoq.cn/news/EY2wGO19AtDvBCNNj88Y)（翻译的不太好）
+
