@@ -182,6 +182,7 @@ const note = [
             'jsNote/手写Promise',
             'jsNote/set',
             'jsNote/random',
+            'jsNote/原型',
         ]
     },
     {
