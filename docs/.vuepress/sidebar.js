@@ -60,6 +60,7 @@ const note = [
             'design/introduce',
             'design/singleton',
             'design/factory',
+            'design/flyweightPattern',
         ]
     },
     {
