@@ -36,7 +36,7 @@
  * @param {number} N
  * @return {number}
  */
- var clumsy = function(N) {
+var clumsy = function(N) {
     let i=0;
     let res = [N--];
     while(N>0){

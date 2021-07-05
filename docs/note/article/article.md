@@ -51,3 +51,8 @@
 
 [上面博客译文](https://www.infoq.cn/news/EY2wGO19AtDvBCNNj88Y)（翻译的不太好）
 
+## 小技巧
+
+### 去小数
+
+`2==Math.trunc(2.5)==2.2|0==~~2.2==Math.floor(2.5)`
