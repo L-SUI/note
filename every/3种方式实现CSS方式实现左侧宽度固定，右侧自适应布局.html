@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 3种方式实现CSS方式实现左侧宽度固定，右侧自适应布局 -->
+    <div class="box">
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+    <style>
+        .box{
+            display:flex;
+        }
+        .left{
+            width:300px;
+        }
+        .right{
+            flex: 1;
+        }
+    </style>
+    <style>
+        .box{
+            position: relative;
+        }
+        .left{
+            width:300px;
+            position:absolute;
+            left:0;
+            top: 0;
+        }
+        .right{
+            padding-left: 300px;
+        }
+    </style>
+    <style>
+        .box{
+            overflow: hidden;
+        }
+        .left{
+            width:300px;
+            float: left;
+        }
+        .right{
+            padding-left: 300px;
+        }
+    </style>
+</body>
+</html>

@@ -56,3 +56,16 @@
 ### 去小数
 
 `2==Math.trunc(2.5)==2.2|0==~~2.2==Math.floor(2.5)`
+
+## 手写
+
+[手写](https://mp.weixin.qq.com/s/QSXfgiSIrk8d9qvEqMHpGA)
+
+## 资源
+
+[https://xqlzgojeop.feishu.cn/base/bascnuPPSXiAEdbRusPPzP7wooz?table=tblzHip8reBd7HdK&view=vewFF6sjeW](https://xqlzgojeop.feishu.cn/base/bascnuPPSXiAEdbRusPPzP7wooz?table=tblzHip8reBd7HdK&view=vewFF6sjeW)
+
+## 算法
+
+- [最小生成树](https://blog.51cto.com/u_15127650/2784716)
+
