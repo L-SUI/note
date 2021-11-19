@@ -26,12 +26,9 @@
 // 1 <= people.length <= 50000
 // 1 <= people[i] <= limit <= 30000
 
-
 // 来源：力扣（LeetCode）
 // 链接：https://leetcode-cn.com/problems/boats-to-save-people
 // 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
-
-
 
 
 /**
@@ -40,15 +37,14 @@
  * @return {number}
  */
  var numRescueBoats = function(people, limit) {
-    let ans = 0;
-    people.sort((a, b) => a - b);
-    let light = 0, heavy = people.length - 1;
-    while (light <= heavy) {
-        if (people[light] + people[heavy] <= limit) {
-            ++light;
-        }
-        --heavy;
-        ++ans;
+    people.sort((a,b)=>a-b);
+    let count = 0,i=0,len = people.length-1;
+    while(people[len]>limit)  (len--,count++)
+    while(i<len){
+        const curr = people[len]+people[i]
+        if(curr>limit) (len--,count++)
+        if(curr<=limit) (len--,i++,count++)
     }
-    return ans;
+    if(len==i) count++
+    return count;
 };

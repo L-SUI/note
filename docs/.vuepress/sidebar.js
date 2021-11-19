@@ -185,6 +185,7 @@ const note = [
             'jsNote/set',
             'jsNote/random',
             'jsNote/原型',
+            'jsNote/实现Symbol类型',
         ]
     },
     {
