@@ -24,13 +24,12 @@ jobs:
       - run: npx vuepress build docs
       - run: rm -rf ./L-SUI.github.io
       - run: git clone https://github.com/L-SUI/L-SUI.github.io.git
-      - run: cd L-SUI.github.io && git pull
-      - run: cd ../ && cp -af ./docs/.vuepress/dist/  ./L-SUI.github.io/
+      - run: cp -af ./docs/.vuepress/dist/  ./L-SUI.github.io/
       - run: cd L-SUI.github.io && git add .
       - run: git config  user.email "943176792@qq.com"
       - run: git config  user.name "LiuXiaoDong"
       - run: git commit -m 'circleci自动提交'
-      - run: git push
+      - run: git push 
       - run: cd ../ && rm -rf ./L-SUI.github.io
       # - persist_to_workspace:
       #     root: .
