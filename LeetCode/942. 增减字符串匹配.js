@@ -42,13 +42,7 @@
  var diStringMatch = function (S) {
     var ans = [], min = 0, max = S.length;
     for (var i = 0; i < S.length + 1; i++) {
-      if (S[i] === 'D') {
-        ans.push(max);
-        max--;
-      } else {
-        ans.push(min);
-        min++;
-      }
+      S[i] === 'D'? ans.push(max--):ans.push(min++);
     }
     return ans;
   };

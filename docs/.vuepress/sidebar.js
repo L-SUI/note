@@ -51,6 +51,7 @@ const note = [
             'algorithm/shell',
             'algorithm/advance',
             'algorithm/object',
+            'algorithm/摩尔投票法',
         ]
     },
     {
