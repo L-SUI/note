@@ -25,7 +25,7 @@ jobs:
       - run: git clone https://github.com/L-SUI/L-SUI.github.io.git
       - run: cp -af ./docs/.vuepress/dist/  ./L-SUI.github.io/
       - run: cd L-SUI.github.io && git add .
-      - run: git commit -m 'feat: circleci自动提交'
+      - run: git commit -m 'circleci自动提交'
       - run: git push
       - run: rm -rf ./L-SUI.github.io
       # - persist_to_workspace:
