@@ -22,6 +22,7 @@ jobs:
       - run: npm install -D vuepress --registry.npmjs.org
       # ksgcLbaW4SVNXtGtudlBOZ2EfMJz80TMlqpNi934
       - run: npx vuepress build docs
+      - run: rm -rf ./L-SUI.github.io
       - run: git clone https://github.com/L-SUI/L-SUI.github.io.git
       - run: cd L-SUI.github.io && git pull
       - run: cd ../ && cp -af ./docs/.vuepress/dist/  ./L-SUI.github.io/
