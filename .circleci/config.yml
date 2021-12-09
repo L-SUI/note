@@ -1,0 +1,64 @@
+#https://github.com/revolunet/create-react-app-circleci/blob/master/.circleci/config.yml
+# 给当前node_modules 一个快照，如果 package.json 没变，node_modules 就不用重新下载
+defaults: &defaults
+  docker:
+    - image: circleci/node:12.18.2
+
+version: 2
+jobs:
+  publish:
+    <<: *defaults
+    steps:
+      - checkout
+      - run: git pull
+      - restore_cache:
+          keys:
+            - v2-dependencies-{{ checksum "package.json" }}
+      - run: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v2-dependencies-{{ checksum "package.json" }}
+      - run: npm install -D vuepress --registry.npmjs.org
+      # ksgcLbaW4SVNXtGtudlBOZ2EfMJz80TMlqpNi934
+      - run: npx vuepress build docs
+      - run: rm -rf ./L-SUI.github.io
+      - run: git clone https://github.com/L-SUI/L-SUI.github.io.git
+      - run: cp -af ./docs/.vuepress/dist/  ./L-SUI.github.io/
+      - run: cd L-SUI.github.io && git add .
+      - run: git config  user.email "943176792@qq.com"
+      - run: git config  user.name "LiuXiaoDong"
+      - run: git commit -m 'circleci自动提交'
+      - run: git push 
+      - run: cd ../ && rm -rf ./L-SUI.github.io
+      # - persist_to_workspace:
+      #     root: .
+      #     paths:
+      #       - node_modules
+
+
+workflows:
+  version: 2
+  build_accept_deploy:
+    jobs:
+      - publish
+      # - prepare
+      # - publish:
+      #     requires:
+      #       - prepare
+#      - prepare
+#      - build:
+#          requires:
+#            - test
+#      - test:
+#          requires:
+#            - prepare
+#          requires:
+#            - build
+#          filters:
+#            # 所有 branches 都忽略，只部署 vx.x.x 的 tags
+##            tags:
+##              only: /^v[0-9]+(\.[0-9]+)*/
+#            branches:
+#              all
+#              ignore: /.*/
