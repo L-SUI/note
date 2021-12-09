@@ -71,7 +71,7 @@ ServerAliveCountMax 20
 LogLevel INFO
 
 #单主机配置
-Host git.yideng.site
+Host git.memory.site
 User git
 IdentityFile ~/.ssh/evilboy_rsa
 Protocol 2

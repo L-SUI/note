@@ -1,27 +1,48 @@
-// 组件通信，一个触发与监听的过程
 class EventEmitter {
-    constructor () {
-      // 存储事件
-      this.events = this.events || new Map()
+  // { [eventName: string]: Map<Function, number> }
+  subscriptions = {};
+
+  subscribe(eventName, callback) {
+    // If new eventName, initialize callbacks map
+    if (!(eventName in this.subscriptions)) {
+      this.subscriptions[eventName] = new Map();
     }
-    // 监听事件
-    addListener (type, fn) {
-      if (!this.events.get(type)) {
-        this.events.set(type, fn)
+
+    // Add callback to map, or increment subscription count for callback
+    this.subscriptions[eventName].set(
+      callback,
+      (this.subscriptions[eventName].get(callback) || 0) + 1
+    );
+
+    return {
+      release: () => {
+        const subCount = this.subscriptions[eventName].get(callback);
+        
+        // Remove or decrement subscription count for callback
+        if (subCount === 1) {
+          this.subscriptions[eventName].delete(callback);
+          
+          if (!this.subscriptions[eventName].size) {
+            delete this.subscriptions[eventName];
+          }
+        } else {
+          this.subscriptions[eventName].set(callback, subCount - 1);
+        }
+      }
+    };
+  }
+  
+  emit(eventName, ...args) {
+    if (!(eventName in this.subscriptions)) {
+      return;
+    }
+    
+    // Call each event callback for the number of times subscribed
+    for (let [callback, subCount] of this.subscriptions[eventName].entries()) {
+      while (subCount > 0) {
+        callback(...args);
+        subCount--;
       }
     }
-    // 触发事件
-    emit (type) {
-      let handle = this.events.get(type)
-      handle.apply(this, [...arguments].slice(1))
-    }
   }
-
-  // 测试
-  let emitter = new EventEmitter()
-  // 监听事件
-  emitter.addListener('ages', age => {
-    console.log(age)
-  })
-  // 触发事件
-  emitter.emit('ages', 18)  // 18
+}

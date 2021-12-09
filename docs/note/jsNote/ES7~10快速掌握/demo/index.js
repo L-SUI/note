@@ -118,7 +118,7 @@ console.log(Object.values(obj)); // ["一灯", 4] */
 
 // console.log(Object.entries(obj)); // [["name", "一灯"],["age", 4]]
 
-// console.log(Object.entries("yideng"));
+// console.log(Object.entries("memory"));
 
 // 需求，遍历对象的键值
 
@@ -221,7 +221,7 @@ let obj = {
 
 // 对象没有
 
-// const obj = { name: "yideng", age: 4 };
+// const obj = { name: "memory", age: 4 };
 
 // // iterator接口
 // obj[Symbol.iterator] = function() {
@@ -305,7 +305,7 @@ let obj = {
 
 // for...await...of
 // const asyncItems = {
-//   name: "yideng",
+//   name: "memory",
 //   age: 4,
 //   [Symbol.asyncIterator]() {
 //     const me = this;
@@ -492,7 +492,7 @@ console.log(Object.fromEntries(map)); //{name: "一灯", address: "beijing"} */
 
 // String.prototype.matchAll  返回包含所有匹配正则表达式及分组捕获迭代器
 
-// const str = "yideng xuetang xuetang";
+// const str = "memory xuetang xuetang";
 // const reg = /xue*/g;
 // // 之前
 // while ((matches = reg.exec(str)) !== null) {
@@ -512,7 +512,7 @@ console.log(Object.fromEntries(map)); //{name: "一灯", address: "beijing"} */
 
 //
 // const reg = /y(i)(deng(\d?))/g;
-// const str = "yideng66yideng66";
+// const str = "memory66memory66";
 // console.log(str.match(reg));
 
 // const arr = [...str.matchAll(reg)];
@@ -569,7 +569,7 @@ try {
 //
 // const arr = [
 //   { name: "w", age: 18 },
-//   { name: "yideng", age: 4 },
+//   { name: "memory", age: 4 },
 //   { name: "www", age: 4 }
 // ];
 // arr.sort((a, b) => a.age - b.age);
@@ -577,11 +577,11 @@ try {
 // //非稳定
 // [
 //   { name: "www", age: 4 },
-//   { name: "yideng", age: 4 },
+//   { name: "memory", age: 4 },
 //   { name: "w", age: 18 }
 // ][
 //   // 稳定
-//   ({ name: "yideng", age: 4 }, { name: "www", age: 4 }, { name: "w", age: 18 })
+//   ({ name: "memory", age: 4 }, { name: "www", age: 4 }, { name: "w", age: 18 })
 // ];
 
 // 新的Function.toString()

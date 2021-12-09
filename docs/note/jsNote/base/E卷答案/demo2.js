@@ -1,5 +1,5 @@
 function test() {
-  var a = 'yideng';
+  var a = 'memory';
   debugger;
   return function () {
     debugger;

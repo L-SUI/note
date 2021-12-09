@@ -8,7 +8,7 @@ const pro = new Promise((resolve, reject) => {
   });
   innerpro.then((res) => console.log(res));
   resolve(4);
-  console.log('yideng');
+  console.log('memory');
 });
 pro.then((res) => console.log(res));
 console.log('end');

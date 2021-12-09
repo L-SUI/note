@@ -9,6 +9,6 @@ function cloneReg(target, isDeep) {
   }
   return result;
 }
-var regx = /yideng/g;
+var regx = /memory/g;
 var reg2 = cloneReg(regx, true);
 console.log(reg2);

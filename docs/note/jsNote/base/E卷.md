@@ -40,7 +40,7 @@ false   false
 function fn(){ 
  console.log(this.length); 
 } 
-var yideng = { 
+var memory = { 
  length:5, 
  method:function(){ 
  "use strict"; 
@@ -48,7 +48,7 @@ var yideng = {
  arguments[0]() 
  } 
 } 
-const result = yideng.method.bind(null); 
+const result = memory.method.bind(null); 
 result(fn,1);
 ```
 ***
@@ -77,7 +77,7 @@ foo()
 3. 请问变量a会被GC回收吗
 ```javascript
 function test(){ 
-    var a = "yideng"; 
+    var a = "memory"; 
     return function(){ 
         eval(""); 
     } 
@@ -96,12 +96,12 @@ test()();
 Object.prototype.a = 'a'; 
 Function.prototype.a = 'a1'; 
 function Person(){}; 
-var yideng = new Person(); 
+var memory = new Person(); 
 console.log(Person.a); 
-console.log(yideng.a); 
+console.log(memory.a); 
 console.log(1..a); 
 console.log(1.a); 
-console.log(yideng.__proto__.__proto__.constructor.constructor.constructor);
+console.log(memory.__proto__.__proto__.constructor.constructor.constructor);
 Object.prototype 和 Function.prototype 打印的差距很大的原因什么
 ```
 ---
@@ -141,11 +141,11 @@ false       false
 7. 请按照下方要求作答，并解释原理？请解释下babel编译后的async原理
 ```javascript
 let a = 0; 
-let yideng = async () => { 
+let memory = async () => { 
     a = a + await 10; 
     console.log(a) 
 } 
-yideng(); 
+memory(); 
 console.log(++a);
 ```
 ---
@@ -205,7 +205,7 @@ const pro = new Promise((resolve, reject) => {
     })
     innerpro.then(res => console.log(res));
     resolve(4);
-    console.log("yideng");
+    console.log("memory");
 })
 pro.then(res => console.log(res));
 console.log("end");
@@ -213,7 +213,7 @@ console.log("end");
 ---
 ```javascript
 2         2
-yideng    yideng
+memory    memory
 end       end
 3         3
 4         4

@@ -118,7 +118,7 @@ npm link
 ```js
 #!/usr/bin/env node
 const figlet = require('figlet');
-const versionStr = figlet.textSync('YiDeng');
+const versionStr = figlet.textSync('memory');
 const Printer = require('@darkobits/lolcatjs');
 const version = require('../package.json').version;
 const transformed = Printer.default.fromString(
@@ -142,7 +142,7 @@ console.log(transformed);
 ```js
 #!/usr/bin/env node
 const figlet = require('figlet');
-const versionStr = figlet.textSync('YiDeng');
+const versionStr = figlet.textSync('memory');
 const Printer = require('@darkobits/lolcatjs');
 const version = require('../package.json').version;
 const chalk = require('chalk');
@@ -434,7 +434,7 @@ const typeMap: any = {
 #!/usr/bin/env node
 const { program } = require('commander');
 const figlet = require('figlet');
-const versionStr = figlet.textSync('YiDeng');
+const versionStr = figlet.textSync('memory');
 const Printer = require('@darkobits/lolcatjs');
 const shell = require('shelljs');
 let json2ts = require('json2ts');
@@ -494,7 +494,7 @@ const bindHandler = {
   },
   json2ts(url) {
     const data = {
-      yideng: 'laoyuan',
+      memory: 'laoyuan',
       data: {
         age: 30 || '',
       },

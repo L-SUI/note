@@ -72,18 +72,18 @@ a is not function       a is not function
 ---
 ```javascript
     var num = 1;
-    function yideng() {
+    function memory() {
         "use strict";
         console.log(this.num++);
     }
-    function yideng2() {
+    function memory2() {
         console.log(++this.num);
     }
     (function() {
         "use strict";
-        yideng2();
+        memory2();
     })();
-    yideng();
+    memory();
 ```
 ---
 ```javascript
@@ -103,14 +103,14 @@ a is not function       a is not function
     function C3(name) { 
         this.name = name || 'fe'; 
     } 
-    C1.prototype.name = "yideng"; 
+    C1.prototype.name = "memory"; 
     C2.prototype.name = "lao"; 
     C3.prototype.name = "yuan"; 
     console.log((new C1().name) + (new C2().name) + (new C3().name));
 ```
 ---
 ```javascript
-    yidengundefinedfe  yidengundefinedfe
+    memoryundefinedfe  memoryundefinedfe
 ```
 ---
 3. 写出li的输出值，并且写出三种正确输出的方式
@@ -174,21 +174,21 @@ a is not function       a is not function
 ```
 5. 请写出代码的执行结果，并解释为什么
 ```javascript
-    function yideng() { 
+    function memory() { 
         console.log(1); 
     } 
     (function () { 
         if (false) { 
-            function yideng() { 
+            function memory() { 
                 console.log(2); 
             } 
         } 
-        yideng(); 
+        memory(); 
     })();
 ```
 ---
 ```javascript
-    yideng is not a function   yideng is not a function
+    memory is not a function   memory is not a function
 ```
 6. 请用一句话算出0-100之间学生的学生等级，如90-100输出一等生，80-90二等生以此类推，不允许使用if，switch
 ```javascript
@@ -228,11 +228,11 @@ a is not function       a is not function
 ```
 10. 考考你的基础怎么样
 ```javascript
-    var regex = /yideng/g; 
-    console.log(regex.test('yideng')); 
-    console.log(regex.test('yideng')); 
-    console.log(regex.test('yideng')); 
-    console.log(regex.test('yideng')); 
+    var regex = /memory/g; 
+    console.log(regex.test('memory')); 
+    console.log(regex.test('memory')); 
+    console.log(regex.test('memory')); 
+    console.log(regex.test('memory')); 
 ```
 ---
 ```javascript
@@ -243,13 +243,13 @@ a is not function       a is not function
 ```
 11. 考考你的基础怎么样
 ```javascript
-var yideng = function yideng(){ 
-    yideng = 1; 
-    console.log(typeof yideng); 
+var memory = function memory(){ 
+    memory = 1; 
+    console.log(typeof memory); 
 } 
-yideng(); 
-yideng = 1; 
-console.log(typeof yideng);
+memory(); 
+memory = 1; 
+console.log(typeof memory);
 ```
 ---
 ```javascript
@@ -262,14 +262,14 @@ console.log(typeof yideng);
     function fn() { 
         console.log(this.length); 
     } 
-    var yideng = { 
+    var memory = { 
         length: 5, 
         method: function(fn) { 
             fn(); 
             arguments[0](); 
         } 
     }; 
-    yideng.method(fn, 1);
+    memory.method(fn, 1);
 ```
 ---
 ```javascript

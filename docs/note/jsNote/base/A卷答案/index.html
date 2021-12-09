@@ -14,38 +14,38 @@
     <iframe></iframe>
     <iframe></iframe>
     <script>
-        // var regex = /yideng/g;
-        // console.log(regex.test('yideng'));
-        // console.log(regex.test('yideng'));
-        // console.log(regex.test('yideng'));
-        // console.log(regex.test('yideng'));
+        // var regex = /memory/g;
+        // console.log(regex.test('memory'));
+        // console.log(regex.test('memory'));
+        // console.log(regex.test('memory'));
+        // console.log(regex.test('memory'));
         // "use strict"
-        // var yideng = function yideng() {
-        //     yideng = 1;
-        //     console.log(typeof yideng);
+        // var memory = function memory() {
+        //     memory = 1;
+        //     console.log(typeof memory);
         // }
-        // yideng();
-        // yideng = 1;
-        // console.log(typeof yideng);
+        // memory();
+        // memory = 1;
+        // console.log(typeof memory);
         // {
-        //     // yideng = 2;
-        //     function yideng() { }
-        //     yideng = 1;
-        //     console.log("inner", yideng);
+        //     // memory = 2;
+        //     function memory() { }
+        //     memory = 1;
+        //     console.log("inner", memory);
         // }
-        // console.log(yideng);
+        // console.log(memory);
         // var length = 10;
         function fn() {
             console.log(this.length);
         }
-        var yideng = {
+        var memory = {
             length: 5,
             method: function (fn) {
                 fn();
                 arguments[0]();
             }
         };
-        yideng.method(fn, 1);
+        memory.method(fn, 1);
 
     </script>
 </body>

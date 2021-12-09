@@ -34,10 +34,10 @@ var a = 30;
     const test = function test() { }
 }
 console.log(test);
-function yideng() { }
-var yideng;
-// yideng = 1;
-console.log(yideng);
+function memory() { }
+var memory;
+// memory = 1;
+console.log(memory);
 alert(a);
 a();
 var a = 3;
@@ -50,17 +50,17 @@ a = 6;
 a();
 
 
-// function yideng() {
+// function memory() {
 //     console.log(1);
 // }
 // function init() {
-//     // console.log(yideng);
+//     // console.log(memory);
 //     if (false) {
-//         function yideng() {
+//         function memory() {
 //             console.log(2);
 //         }
 //     }
-//     console.log(yideng);
+//     console.log(memory);
 // }
-// // yideng();
+// // memory();
 // init();

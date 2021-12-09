@@ -1,10 +1,10 @@
 let a = 0;
-let yideng = async () => {
+let memory = async () => {
   console.log('init');
   a = a + (await 10);
   console.log(a);
 };
-yideng();
+memory();
 console.log(++a);
 
 // function* genDemo() {

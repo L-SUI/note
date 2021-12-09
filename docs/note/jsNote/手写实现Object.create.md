@@ -2,8 +2,9 @@
 ```javascript
 // 思路：将传入的对象作为原型
 function create(obj) {
-    function F() {}
-    F.prototype = obj
-    return new F()
+  if (typeof proto !== 'object' || proto === null) throw new Error('');
+  const obj = {};
+  obj.__proto__ = proto;
+  return obj;
 }
 ```

@@ -18,18 +18,18 @@ var p = test.init(go);
 p();
 
 var num = 1;
-function yideng() {
+function memory() {
   'use strict';
   console.log(this.num++);
 }
-function yideng2() {
+function memory2() {
   console.log(++this.num);
 }
 (function () {
   'use strict';
-  yideng2();
+  memory2();
 })();
-yideng();
+memory();
 
 this.a = 20;
 var test = {

@@ -1,7 +1,7 @@
-// var yideng = 1; 元编程
-var yideng = {
+// var memory = 1; 元编程
+var memory = {
   [Symbol.toPrimitive]: ((i) => () => ++i)(0),
 };
-if (yideng == 1 && yideng == 2 && yideng == 3) {
+if (memory == 1 && memory == 2 && memory == 3) {
   console.log('京程一灯');
 }
