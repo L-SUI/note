@@ -11,6 +11,7 @@ const note = [
             'optimization/性能优化五',
             'optimization/性能优化总结',
             'optimization/SOLID',
+            'optimization/performance指标解释',
         ]
     },
     {  
@@ -88,6 +89,7 @@ const note = [
             'http/http_1',
             'http/http_2',
             'http/http_head',
+            'http/网络经典问题',
         ]
     },
     {
