@@ -81,3 +81,12 @@
 
 - [https://blog.51cto.com/u_15315508/3211091](https://blog.51cto.com/u_15315508/3211091)
 
+## 私有仓库
+
+https://verdaccio.org/
+https://github.com/cnpm/cnpmjs.org
+
+
+## module && unmodule
+
+- [https://blog.csdn.net/weixin_34321753/article/details/89701992](https://blog.csdn.net/weixin_34321753/article/details/89701992)

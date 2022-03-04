@@ -132,3 +132,53 @@ type MyOmitThisParameter<T> = T extends (...args: unknown[]) => infer R
 ? () => R
 : never
 
+  //  实现ThisParameterType<T> 
+type MyThisParameterType<T> =T extends (this:infer P)=>unknown?P:unknown;
+function Foo(this: {a: string}) {}
+function Bar() {}
+type A = MyThisParameterType<typeof Foo> // {a: string}
+type B = MyThisParameterType<typeof Bar> // unknown
+
+
+// your code here, please don't use InstanceType<T> in your code
+type MyInstanceType<T extends  new (...args: any)=> any> = T extends Function ? T['prototype'] : never
+// class Foo {}
+// type A = MyInstanceType<typeof Foo> // Foo
+// type B = MyInstanceType<() => string> // Error
+
+
+// Function.prototype.bind()返回一个this已经bind过后的function。 对于这种情况，可以用OmitThisParameter<T>来增加type信息。
+// 请自行实现MyOmitThisParameter<T>。
+// function foo(this: {a: string}) {}
+// foo() // Error
+// const bar = foo.bind({a: 'BFE.dev'})
+// bar() // OK
+// type Foo = (this: {a: string}) => string
+// type Bar = MyOmitThisParameter<Foo> // () => string
+
+// your code here, please don't use OmitThisParameter<T> in your code
+type MyOmitThisParameter<F extends Function> = F extends (this: infer This,...args: infer Rest)=> infer R ? (...args: Rest)=> R: never
+
+// implement Divide<A, B>
+// type A = Divide<1, 0> // never
+// type B = Divide<4, 2> // 2
+// type C = Divide<10, 3> // 3
+type Tuple<T extends number, U extends any[] = []> =
+  U['length'] extends T ? U : Tuple<T, [...U, any]>
+
+type Subtract<
+  A extends number,
+  B extends number
+  > = Tuple<A> extends [...Tuple<B>, ...infer R] ? R['length'] : never
+
+type SmallerThan<
+  A extends number,
+  B extends number,
+  S extends number[] = []
+> = S['length'] extends B
+  ? false
+  : S['length'] extends A
+  ? true
+  : SmallerThan<A, B, [A, ...S]>
+type Divide<A extends number, B extends number, S extends number[] = []> = 
+B extends 0 ? never : SmallerThan<A,B> extends true ? S['length'] : Divide<Subtract<A, B>, B, [...S, any]>;
