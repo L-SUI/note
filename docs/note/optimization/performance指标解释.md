@@ -2,9 +2,9 @@
 
 ## 页面的整个过程如下图
 
-![H5 > 指标含义及计算方式 > renderscope3.png](/optimization/renderscope3.png)
+![renderscope3.png](/optimization/renderscope3.png)
 
-![H5 > 指标含义及计算方式 > browerrender.jpg](/optimization/browerrender.jpeg)
+![browerrender.jpg](/optimization/browerrender.jpeg)
 
 ## performance各个时间点的含义
 
@@ -40,7 +40,7 @@
 
 ## 指标计算
 
-\1. 时间维度
+1. 时间维度
 
 - DNS耗时: domainLookupEnd - domainLookupStart
 - TCP耗时: connectEnd - connectStart
@@ -54,7 +54,7 @@
 - DOM解析耗时: domInteractive – responseEnd (意义: 观察DOM结构是否合理，是否有JS阻塞页面解析)
 - HTML下载耗时: responseEnd - responseStart
 
-\2. 页面维度
+2. 页面维度
 
    2.1 图片优化
 
@@ -63,58 +63,9 @@
 
    2.2 重复请求: 判断是否有相同的http链接
 
-\3. 参考项
+3. 参考项
 
 - 页面内存: performance
 - dom节点的最大深度: lighthouse中的artifacts可以拿到dom最大深度、和dom节点数量
 
 
-
-## 判分标准1.0
-
-| 项目         | 描述             | 单项分数上限(总分100) | 标准值/（ms｜个数） | 扣分标准             | 参考链接                                             |
-| :----------- | :--------------- | :-------------------- | :------------------ | :------------------- | :--------------------------------------------------- |
-| FCP          | 首次内容绘制     | 10                    | 1500ms              | 每超过 500ms 扣 3 分 | https://web.dev/first-contentful-paint/              |
-| LCP          | 最大内容绘制     | 10                    | 2000ms              | 每超过 500ms 扣 3 分 | https://web.dev/lighthouse-largest-contentful-paint/ |
-| TTI          | 首次可交互时间   | 10                    | 2500ms              | 每超过 500ms 扣 3 分 | https://web.dev/interactive/                         |
-| CLS          | 累计偏移量       | 10                    | 0.2(无单位，参考值) | 每超过 0.1 扣 3 分   | https://web.dev/cls/                                 |
-| TBT          | 阻塞总时间       | 10                    | 300ms               | 每超过 50ms 扣 3 分  | https://web.dev/lighthouse-total-blocking-time/      |
-| DNS          | DNS耗时          | 5                     | 100ms               | 每超过 10ms 扣 1 分  |                                                      |
-| TCP          | TCP耗时          | 5                     | 100ms               | 每超过 10ms 扣 1 分  |                                                      |
-| LOAD         | 加载时间         | 10                    | 3000ms              | 每超过 500ms 扣 3 分 |                                                      |
-| INTERACTIVE  | DOM解析耗时      | 7                     | 500ms               | 每超过 300ms 扣 2 分 |                                                      |
-| HTMLDOWN     | HTML下载耗时     | 7                     | 50ms                | 每超过 10ms 扣 2 分  |                                                      |
-| IMGSIZELIMIT | 图片大于500k     | 5                     | 0个                 | 每超过 1个 扣 1 分   |                                                      |
-| IMGLAZYLIMIT | 图片未使用懒加载 | 5                     | 0个                 | 每超过 1个 扣 1 分   |                                                      |
-| NOTFOUND     | 资源404          | 6                     | 0个                 | 每超过 1个 扣 3 分   |                                                      |
-
-网络环境：标准4g  机器的cpu的benchmark为1846，cpu倍降率5.3([计算方式](https://lighthouse-cpu-throttling-calculator.vercel.app/)). [参考链接](https://github.com/GoogleChrome/lighthouse/blob/master/docs/throttling.md)。 
-
-
-
-## 判分标准1.1
-
-新的判分标准分为如下两部分：
-
-\1. 根据大部分页面的测试结果找出我们页面的p10值和median值，根据chrome的计算公式来进行计算。[参考链接](https://www.desmos.com/calculator/oqlvmezbze?lang=zh-CN)，计算代码:lighthouse/calc/normal-calc.ts
-
-| 项目 | 描述           | 单项分数上限(总分100) | p10值  | median值      | 参考链接                                             |
-| :--- | :------------- | :-------------------- | :----- | :------------ | :--------------------------------------------------- |
-| FCP  | 首次内容绘制   | 12                    | 1000ms | 1800ms        | https://web.dev/first-contentful-paint/              |
-| LCP  | 最大内容绘制   | 12                    | 1500ms | 2400ms        | https://web.dev/lighthouse-largest-contentful-paint/ |
-| TTI  | 首次可交互时间 | 12                    | 1600ms | 2200ms 3000ms | https://web.dev/interactive/                         |
-| TBT  | 阻塞总时间     | 12                    | 100ms  | 350ms 450ms   | https://web.dev/lighthouse-total-blocking-time/      |
-| CLS  | 累计偏移量     | 10                    | 0.1    | 0.25          | https://web.dev/cls/                                 |
-| LOAD | 加载时间       | 10                    | 2000ms | 3500ms        |                                                      |
-
-
-
-\2. 设定一个标准，每超过多少扣多少分
-
-| 项目         |       描述       | 单项分数上限(总分100) | 标准值/（ms｜个数） |       扣分标准       |
-| :----------- | :--------------: | :-------------------: | :-----------------: | :------------------: |
-| INTERACTIVE  |   DOM解析耗时    |           7           |        500ms        | 每超过 300ms 扣 2 分 |
-| HTMLDOWN     |   HTML下载耗时   |           7           |        50ms         | 每超过 10ms 扣 2 分  |
-| IMGSIZELIMIT |   图片大于500k   |           6           |         0个         |  每超过 1个 扣 1 分  |
-| IMGLAZYLIMIT | 图片未使用懒加载 |           6           |         0个         |  每超过 1个 扣 1 分  |
-| NOTFOUND     |     资源404      |           6           |         0个         |  每超过 1个 扣 3 分  |
