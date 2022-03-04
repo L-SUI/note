@@ -5,7 +5,7 @@ export function get<T extends object, K extends keyof T>(o: T, name: K) {
   return o[name];
 }
 
-export type PickPromise<T extends Promise<unknown>> = T extends Promise<infer P>?P:T;
+export type PickPromise<T extends Promise<unknown>> = T extends Promise<infer P> ? P : T;
 
 export type ResponseType<T> = {
   code: number;
@@ -23,9 +23,9 @@ export type ElementType<T extends ReadonlyArray<unknown>> = T extends ReadonlyAr
   ? ElementType
   : never;
 
-type Trim<T extends string> = T extends ` ${infer R}` 
-? Trim<R> 
-: T extends `${infer L} `
+type Trim<T extends string> = T extends ` ${infer R}`
+  ? Trim<R>
+  : T extends `${infer L} `
   ? Trim<L>
   : T
 
@@ -35,7 +35,7 @@ type CapitalizeString<T> = T extends `${infer L}${infer R}`
 
 // 实现 FirstChar 泛型 获取字符串的第一个字母，如果字符串为空，则返回never;
 type FirstChar<Str extends string> = Str extends `${infer First}${infer Second}`
-  ? `${First}`: never;
+  ? `${First}` : never;
 
 // 实现 LastChar 泛型 获取字符串的最后一个字母，如果字符串为空，则返回never;
 type LastChar<
@@ -102,10 +102,10 @@ type CamelCase<
   F extends boolean = true // 标记
   > = T extends `${infer L}${infer R}`
   ? F extends true
-    ? CamelCase<R, SPLIT, `${RE}${Uppercase<L>}`, false>
-    : L extends SPLIT 
-      ? CamelCase<R, SPLIT, `${RE}`, true>
-      : CamelCase<R, SPLIT, `${RE}${L}`, false>
+  ? CamelCase<R, SPLIT, `${RE}${Uppercase<L>}`, false>
+  : L extends SPLIT
+  ? CamelCase<R, SPLIT, `${RE}`, true>
+  : CamelCase<R, SPLIT, `${RE}${L}`, false>
   : RE;
 
 // 实现 NaiveFlats 泛型，将数组字符串拍平。
@@ -113,22 +113,82 @@ type NaiveFlat<T extends any[]> = {
   [P in keyof T]: T[P] extends any[] ? T[P][number] : T[P]
 }[number]
 
-type NaiveFlats<T extends any[]>  = {
+type NaiveFlats<T extends any[]> = {
   [P in keyof T]: T[P] extends any[] ? NaiveFlat<T[P]> : T[P]
 }[number]
 
-type NaiveResult1 = NaiveFlat<['a','s','d']>
+type NaiveResult1 = NaiveFlat<['a', 's', 'd']>
 
 // 实现 NonEmptyArray 泛型，提示数组不能为空。
 // 方案一
-type NonEmptyArray<T> = [T,...T[]]
+type NonEmptyArray<T> = [T, ...T[]]
 // 方案二
-type NonEmptyArray<T> = T[] & {0:T}
+type NonEmptyArray<T> = T[] & { 0: T }
 
 // Function.prototype.bind()返回一个this已经bind过后的function。 
 // 对于这种情况，可以用OmitThisParameter<T>来增加type信息。请自行实现MyOmitThisParameter<T>。
 
 type MyOmitThisParameter<T> = T extends (...args: unknown[]) => infer R
-? () => R
-: never
+  ? () => R
+  : never
 
+
+type Stringify<T extends number | string> = `${T}`
+type CheckLeftIsExtendsRight<T extends any, R extends any> = T extends R ? true : false;
+type Not<C extends boolean> = C extends true ? false : true;
+type Or<C1 extends boolean, C2 extends boolean> = C1 extends true
+  ? true
+  : C2 extends true
+  ? true
+  : false
+// 两个number类型是否相等
+type IsEqual<
+  L extends NumberLike,
+  R extends NumberLike,
+  Strict extends boolean = true
+  > = Strict extends true
+  ? CheckLeftIsExtendsRight<L, R>
+  : CheckLeftIsExtendsRight<Stringify<L>, Stringify<R>>
+//两个number类型是否不相等
+type IsNotEqual<
+  L extends NumberLike,
+  R extends NumberLike,
+  Strict extends boolean = true
+  > = Not<IsEqual<L, R, Strict>>
+
+type NumberLike = number | `${number}`;
+type IsZero<N extends NumberLike> = CheckLeftIsExtendsRight<N, 0 | "0">
+type IsOverZero<N extends NumberLike> = IsZero<N> extends true
+  ? false
+  : CheckLeftIsExtendsRight<
+    Stringify<N> extends `${"-"}${infer Rest}` ? Rest : never,
+    never
+  >
+type IsLessZero<N extends NumberLike> = Not<IsOverZero<N>>
+type GetTuple<Length extends number = 0> = GetTupleHelper<Length>
+type GetTupleHelper<
+  Length extends number = 0,
+  R extends unknown[] = []
+  > = R["length"] extends Length ? R : GetTupleHelper<Length, [...R, unknown]>
+type Pop<T extends unknown[]> = T extends [...infer LeftRest, infer Last]
+  ? LeftRest
+  : never
+type CompareHelper<
+  N1 extends number,
+  N2 extends number,
+  T1 extends unknown[] = GetTuple<N1>,
+  T2 extends unknown[] = GetTuple<N2>
+  > = IsNotEqual<N1, N2, true> extends true
+  ? Or<IsZero<T1["length"]>, IsZero<T2["length"]>> extends true
+  ? IsZero<T1["length"]> extends true
+  ? false
+  : true
+  : CompareHelper<Pop<T1>["length"], Pop<T2>["length"]>
+  : false
+// 比较两个数字类型大小
+type Compare<N1 extends number, N2 extends number> = CompareHelper<N1, N2>
+
+type LargerThan<A extends number, B extends number> = IsEqual<A,B> extends true?Compare<A,B>:
+IsOverZero<A> extends true?true:false;
+type LargerThanA = LargerThan<10, 9.3> // true
+type LargerThanB = LargerThan<-10, 9.3> // false
