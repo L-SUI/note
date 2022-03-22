@@ -98,3 +98,20 @@ https://github.com/cnpm/cnpmjs.org
 
 - [https://github.com/zhuijing/code-for-vue-3-book](https://github.com/zhuijing/code-for-vue-3-book)
 
+## 突破Hooks所有限制，只要50行代码
+
+- https://dev.to/ryansolid/building-a-reactive-library-from-scratch-1i0p
+- https://codesandbox.io/s/creatememo-0xyqf?from-embed=&file=/reactive.js
+
+## SWC
+
+- [swc-很好，也还不够好](https://www.teqng.com/2021/07/06/swc-%E5%BE%88%E5%A5%BD%EF%BC%8C%E4%B9%9F%E8%BF%98%E4%B8%8D%E5%A4%9F%E5%A5%BD)
+
+## JsToTs
+
+- TypeStat
+- TypeWiz
+- js-to-ts-converter
+- TS-migrate 
+- dts-gen
+- api-extractor
