@@ -32,6 +32,7 @@ type Trim<T extends string> = T extends ` ${infer R}`
 // 实现 CapitalizeString 泛型 将字符串的第一个字符转成大些，如果不是字符串，则直接返回。
 type CapitalizeString<T> = T extends `${infer L}${infer R}`
   ? `${Uppercase<L>}${R}` : T;
+// type A =CapitalizeString<'abcd'>//Abcd
 
 // 实现 FirstChar 泛型 获取字符串的第一个字母，如果字符串为空，则返回never;
 type FirstChar<Str extends string> = Str extends `${infer First}${infer Second}`
