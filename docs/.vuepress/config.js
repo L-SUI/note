@@ -1,5 +1,6 @@
 const nav = require('./nav.js')
-const sidebar = require('./sidebar.js')
+// const sidebar = require('./sidebar.js')
+const utils = require("./utils");
 
 module.exports = {
     title: 'Memory space',
@@ -16,7 +17,7 @@ module.exports = {
         smoothScroll: true,
         repo: 'L-SUI/note',
         nav,
-        sidebar,
+        sidebar: utils.inferSiderbars(),
         docsDir: 'docs',
         editLinks: true,
         editLinkText: '在 Github 上编辑此页',

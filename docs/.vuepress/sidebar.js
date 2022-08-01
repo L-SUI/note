@@ -1,7 +1,8 @@
 // note
-const note = [
+const sidebarMap = [
     {
         title: '性能优化',
+        dirname: 'optimization',
         collapsable: true,
         children: [
             'optimization/性能优化一',
@@ -16,6 +17,7 @@ const note = [
     },
     {  
         title: '源码解析',
+        dirname: 'sourceCode',
         collapsable: true,
         children: [
             'sourceCode/vue2',
@@ -29,6 +31,7 @@ const note = [
     },
     {
         title: '你不知道的css',
+        dirname: 'cssNote',
         collapsable: true,
         children: [
             'cssNote/css',
@@ -39,6 +42,7 @@ const note = [
     },
     {
         title:'数据结构与算法',
+        dirname: 'algorithm',
         collapsable: true,
         children: [
             'algorithm/algorithm',
@@ -57,6 +61,7 @@ const note = [
     },
     {
         title:'设计模式',
+        dirname: 'design',
         collapsable: true,
         children: [
             'design/introduce',
@@ -67,6 +72,7 @@ const note = [
     },
     {
         title: 'TypeScript',
+        dirname: 'typescript',
         collapsable: true,
         children: [
             'typescript/typescript',
@@ -76,6 +82,7 @@ const note = [
     },
     {
         title: 'Node',
+        dirname: 'node',
         collapsable: true,
         children: [
             'node/node',
@@ -84,6 +91,7 @@ const note = [
     },
     {
         title: 'HTTP',
+        dirname: 'http',
         collapsable: true,
         children: [
             'http/http_1',
@@ -94,6 +102,7 @@ const note = [
     },
     {
         title: 'Linux',
+        dirname: 'linux',
         collapsable: true,
         children: [
             'linux/linux',
@@ -105,6 +114,7 @@ const note = [
     },
     {
         title: 'OS',
+        dirname: 'os',
         collapsable: true,
         children: [
             'os/thread'
@@ -112,6 +122,7 @@ const note = [
     },
     {
         title: 'Python',
+        dirname: 'python',
         collapsable: true,
         children: [
             'python/python爬虫'
@@ -119,6 +130,7 @@ const note = [
     },
     {
         title: 'Java',
+        dirname: 'java',
         collapsable: true,
         children: [
             'java/java'
@@ -126,6 +138,7 @@ const note = [
     },
     {
         title: 'Nginx',
+        dirname: 'nginx',
         collapsable: true,
         children: [
             'nginx/nginx'
@@ -133,6 +146,7 @@ const note = [
     },
     {
         title: '项目工程化',
+        dirname: 'engineering',
         collapsable: true,
         children: [
             'engineering/ci_cd',
@@ -142,6 +156,7 @@ const note = [
     },
     {
         title: '数据库',
+        dirname: 'database',
         collapsable: true,
         children: [
             'mysql/mysql'
@@ -149,16 +164,18 @@ const note = [
     },
     {
         title: '常用工具',
+        dirname: 'tools',
         collapsable: true,
         children: [
-            'mac/command_line',
-            'mac/homebrew',
-            'mac/nvm',
-            'node/nrm'
+            'tools/command_line',
+            'tools/homebrew',
+            'tools/nvm',
+            'tools/nrm'
         ]
     },
     {
         title: '自动化',
+        dirname: 'automation',
         collapsable: true,
         children: [
             'automation/jenkins',
@@ -167,6 +184,7 @@ const note = [
     },
     {
         title: 'js相关',
+        dirname: 'jsNote',
         collapsable: true,
         children: [
             'jsNote/函数柯里化curry',
@@ -192,6 +210,7 @@ const note = [
     },
     {
         title: 'QA相关',
+        dirname: 'QA',
         collapsable: true,
         children: [
             'QA/JavaScript&QA',
@@ -199,6 +218,7 @@ const note = [
     },
     {
         title: '文章收藏',
+        dirname: 'article',
         collapsable: true,
         children: [
             'article/article',
@@ -206,78 +226,5 @@ const note = [
     },
 ]
 
-// 算法
-// const algorithm = [
-//     {
-//         title: '数组',
-//         collapsable: true,
-//         children: [
-//             'array/count',
-//             'array/bisection_method',
-//             'array/find_min_number'
-//         ]
-//     },
-//     {
-//         title: '字符串',
-//         collapsable: true,
-//         children: [
-//             'string/slide_window'
-//         ]
-//     },
-//     {
-//         title: '栈、队列、',
-//         collapsable: true,
-//         children: [
-//             'sort/queue',
-//             'sort/linked_list',
-//             'linked_list/find_key'
-//         ]
-//     },
-//     {
-//         title: '趣味算法',
-//         collapsable: true,
-//         children: [
-//             'other/cards',
-//             'other/range_of_motion'
-//         ]
-//     },
-// ]
 
-// 开源相关
-// const open_source = [
-//     {
-//         title: '开源贡献',
-//         collapsable: true,
-//         children: [
-//             '',
-//         ]
-//     },
-//     {
-//         title: 'TinyDB',
-//         collapsable: true,
-//         children: [
-//             'github/indexeddb',
-//             'github/tinydb_docapi'
-//         ]
-//     },
-//     {
-//         title: 'Simple-dark',
-//         collapsable: true,
-//         children: [
-//             'vscode/Simple-dark'
-//         ]
-//     },
-//     {
-//         title: 'tscli',
-//         collapsable: true,
-//         children: [
-//             'cli/tscli'
-//         ]
-//     }
-// ]
-
-module.exports = {
-    '/note/': note,
-    // '/algorithm/': algorithm,
-    // '/open_source/': open_source
-}
+module.exports = sidebarMap;
