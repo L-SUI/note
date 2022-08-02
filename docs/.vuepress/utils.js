@@ -26,7 +26,6 @@ exports.inferSiderbars = () => {
 
             const parent = `/note/`;
             const children = handleFiles(dirpath).map(item => dirname+'/'+item);
-            console.log(children)
             sidebar[parent].push({
                 title,
                 children,

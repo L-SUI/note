@@ -2,12 +2,15 @@
   "devDependencies": {
     "@vuepress/plugin-back-to-top": "^1.5.4",
     "@vuepress/plugin-medium-zoom": "^1.5.4",
+    "inquirer": "^9.0.2",
     "jest": "^27.5.1",
     "rewire": "^6.0.0",
+    "shelljs": "^0.8.5",
     "vuepress": "^1.5.2"
   },
   "scripts": {
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:build": "vuepress build docs",
+    "push": "node release.js"
   }
 }
