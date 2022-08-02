@@ -44,7 +44,6 @@ const main = async () => {
   const { echo,exec } = (await shell).default;
   echo(`\nReleasing start ...\n`);
   const commitDesc = await getCommitDesc();
-  console.log(commitDesc);
   if(commitDesc.current) {
     await exec(`git add .`);
     await exec(`git commit -m "${commitDesc.type}: ${commitDesc.desc}"`);
