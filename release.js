@@ -44,7 +44,7 @@ const main = async () => {
   await exec(`npm run docs:build`);
   await exec(`cd ../`);
   await exec(`cp -af ./note/docs/.vuepress/dist/  ./L-SUI.github.io/`);
-  await exec(`cd ./L-SUI.github.io/`);
+  await exec(`cd ./L-SUI.github.io`);
   await exec(`git add .`);
   await exec(`git commit -m "${commitDesc.type}: ${commitDesc.desc}"`);
   await exec('git push');
