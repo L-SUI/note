@@ -81,8 +81,8 @@ const sidebarMap = [
         ]
     },
     {
-        title: 'Node',
-        dirname: 'node',
+        title: 'Server',
+        dirname: 'server',
         collapsable: true,
         children: [
             'node/node',
@@ -152,14 +152,6 @@ const sidebarMap = [
             'engineering/ci_cd',
             'engineering/sonar',
             'engineering/小程序系列之-工程化',
-        ]
-    },
-    {
-        title: '数据库',
-        dirname: 'database',
-        collapsable: true,
-        children: [
-            'mysql/mysql'
         ]
     },
     {
