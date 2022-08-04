@@ -30,7 +30,7 @@
 
 我们贴出**KOA-BIGPIPE**的项目基本结构：
 
-<img src="../assets/images/chapter9/26.png" alt="node-app.png" style="zoom:50%;" />
+<img src="/server/26.png" alt="node-app.png" style="zoom:50%;" />
 
 接下来上代码：
 
@@ -79,15 +79,15 @@ app.listen(3000, function() {
 
 在终端运行`npm run dev`命令，用浏览器访问`http://localhost:3000/`：
 
-<img src="../assets/images/chapter9/27.png" alt="node-app.png" style="zoom:50%;" />
+<img src="/server/27.png" alt="node-app.png" style="zoom:50%;" />
 
 这是传统的页面，到这里我们一切都很熟悉。但是我们并不是要讨论传统一次性渲染直出的web服务怎么搭建，而是要了解分段渲染，也就是说以chunk的方式渲染页面。接下来进入正题，我们首先打开[百度](https://www.baidu.com/)的页面观察一下百度首页的network：
 
-<img src="../assets/images/chapter9/28.png" alt="node-app.png" style="zoom:50%;" />
+<img src="/server/28.png" alt="node-app.png" style="zoom:50%;" />
 
 我们可以看到在百度首页请求的响应头中存在一个`Transfer-Encoding: chunked`的参数项，值为`chunked`，这就代表了百度的首页是使用了流式的，串行的输出。并不是传统的一次性等待的方式。我们再来看一下我们刚才写的首页的响应头：
 
-<img src="../assets/images/chapter9/29.png" alt="node-app.png" style="zoom:50%;" />
+<img src="/server/29.png" alt="node-app.png" style="zoom:50%;" />
 
 我们可以看到在响应头中并没有`Transfer-Encoding: chunked`。那么我们需要怎么改造一下我们自己写的代码，才能让网页变成像百度一样的流式输出呢？那就要使用bigpipe的方式：
 
@@ -159,7 +159,7 @@ app.listen(3000, function() {
 
 使用浏览器访问`http://localhost:3000/`：
 
-<img src="../assets/images/chapter9/30.png" alt="node-app.png" style="zoom:50%;" />
+<img src="/server/30.png" alt="node-app.png" style="zoom:50%;" />
 
 我们可以看到三个关键的信息：
 
@@ -215,7 +215,7 @@ app.listen(3000, function() {
 
 这时候我们再次访问`http://localhost:3000/`：
 
-<img src="../assets/images/chapter9/31.png" alt="node-app.png" style="zoom:50%;" />
+<img src="/server/31.png" alt="node-app.png" style="zoom:50%;" />
 
 请求已经正常了，到这里我们最简单的实现bigpipe的方式已经实现了。这样的输出比一次性全部渲染的方式相比性能要高出无数倍。
 
@@ -298,7 +298,7 @@ app.listen(3000, function() {
 
 我们重新访问一下`http://loaclhost:3000/`
 
-<img src="../assets/images/chapter9/32.png" alt="node-app.png" style="zoom:50%;" />
+<img src="/server/32.png" alt="node-app.png" style="zoom:50%;" />
 
 我们惊奇的发现，页面上输出了一个`OK`，但是我们的代码中并没有写任何关于OK的内容。这是因为我们的代码编辑是有问题的，Koa源码中要求stream的输出要是一个Promise对象，我们用Promise来改写一下上面的代码：
 
@@ -365,7 +365,7 @@ app.listen(3000, function() {
 
 这种方式是最常用的方式，也是Vue和React中bigpipe的实现方式。重新访问`http://localhost:3000/`：
 
-<img src="../assets/images/chapter9/33.png" alt="node-app.png" style="zoom:50%;" />
+<img src="/server/33.png" alt="node-app.png" style="zoom:50%;" />
 
 **3. 使用chunk的方式实现bigpipe**
 
@@ -471,7 +471,7 @@ app.listen(3000, function() {
 
 最后我们访问`http://localhost:3000/`：
 
-<img src="../assets/images/chapter9/34.png" alt="node-app.png" style="zoom:50%;" />
+<img src="/server/34.png" alt="node-app.png" style="zoom:50%;" />
 
 到现在为止我们手写了三种方法实现bigpipe，但是我们并不能直观的感受到bigpipe给我们带来的性能优化，即使它的性能就是非常高的，但是在观感上和传统的方式并无不同。设想一下如果我们的后端数据使用bigpipe能够一行一行的显示在浏览器中，那么我们就能直观的感受到性能的变化！
 

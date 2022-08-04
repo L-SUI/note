@@ -332,13 +332,13 @@ app.listen(config.port, () => {
 
 + 传统的直接落地页面
 
-  <img src="../assets/images/chapter9/24.png" alt="node-app.png" style="zoom:100%;" />
+  <img src="/server/24.png" alt="node-app.png" style="zoom:100%;" />
 
   我们可以看到完全是把页面用到的所有的资源全部加载了一遍。
 
 + 实现了Vue SSR原理的栈内切页
 
-  <img src="../assets/images/chapter9/25.png" alt="node-app.png" style="zoom:100%;" />
+  <img src="/server/25.png" alt="node-app.png" style="zoom:100%;" />
 
   我们可以看到在站内切页的时候只有一个请求，而且这个请求是个xhr请求，也就是ajax请求，请求的返回值就是要替换的DOM结构。
 

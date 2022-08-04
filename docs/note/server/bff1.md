@@ -165,9 +165,9 @@ app.listen(3000, function() {
 
 在终端里输入：`node app.js` 命令启动服务，然后打开浏览器在地址栏输入`localhost:3000`，你会看见熟悉的 `hello koa`。  
 
-<img src="../assets/images/chapter9/node-app.png" alt="node-app.png" style="zoom:50%;" />
+<img src="/server/node-app.png" alt="node-app.png" style="zoom:50%;" />
 
-<img src="../assets/images/chapter9/hello-koa.png" alt="hello-koa" style="zoom:30%;" />
+<img src="/server/hello-koa.png" alt="hello-koa" style="zoom:30%;" />
 
 执行结果如图所示  
 

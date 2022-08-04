@@ -68,7 +68,7 @@ app.listen(config.port, () => {
 
 根据上面的代码注释，我们可以看到控制台中输出了`Some debug message`字样的日志。log4js比自带的日志打印优越的地方还在于，它带有时间戳，可以更加细致的去定位问题。除了日志的时间，log4js还会区分日志的级别和日志的分类。
 
-<img src="../assets/images/chapter9/log4.png" alt="node-app.png" style="zoom:50%;" />
+<img src="/server/log4.png" alt="node-app.png" style="zoom:50%;" />
 
 我们可以看一下log4js都支持什么日志级别：
 
@@ -183,7 +183,7 @@ app.listen(config.port, () => {
 
 保存代码，自动执行之后，我们在看一下我们的项目目录：
 
-<img src="../assets/images/chapter9/log-err.png" alt="node-app.png" style="zoom:50%;" />
+<img src="/server/log-err.png" alt="node-app.png" style="zoom:50%;" />
 
 我们可以看到项目中多了一个log目录，里面有一个error.log日志文件，里面记录的日志和我们手动输出的日志是相同的，日记的级别也和我们的设置相同，说明日志的本地化功能是生效的。
 
@@ -276,7 +276,7 @@ module.exports = IndexController;
 
 以上的代码就是log4js的所有测试代码，我们来简单的分析一下。首先我们在app.js中初始化logger实例，然后把logger实例传入错误捕获中间件的`errorHandle.error`中，再看错误捕获中间件的处理，需要拿到logger实例，然后再出错的分支下，记录错误日志。这是后的try……catch必须要传入err对象。以便记录错误的详细信息。最后我们在indexController中手动抛出一个错误。我们来请求一下首页，首页毫无疑问会出现`500请求，正在积极修复。`，看看最终的错误日志：
 
-<img src="../assets/images/chapter9/log4js-test.png" alt="node-app.png" style="zoom:50%;" />
+<img src="/server/log4js-test.png" alt="node-app.png" style="zoom:50%;" />
 
 到此为止，我们使用log4js实现错误日志的本地化存储功能全部实现。最后我们还要解决一个问题，如果日志文件过大怎么解决？
 
@@ -468,7 +468,7 @@ export default initController;
 
 + 最后我们在浏览器地址栏输入 `http://localhost:8000/api/booklist`：
 
-<img src="../assets/images/chapter9/bookslist.png" alt="node-app.png" style="zoom:50%;" />
+<img src="/server/bookslist.png" alt="node-app.png" style="zoom:50%;" />
 
 到现在为止我们的BFF层调用后端的接口这一功能就全部实现了。
 

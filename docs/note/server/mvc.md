@@ -32,7 +32,7 @@ MVC只是一个简称，实际上对应了三个东西：
 
 下面我们来看看MVC模式的流程图：
 
-<img src="../assets/images/chapter9/mvc.png" alt="node-app.png" style="zoom:50%;" />
+<img src="/server/mvc.png" alt="node-app.png" style="zoom:50%;" />
 
 MVC模式想要运转起来，是少不了用户的操作的，平时所说的MVC只是静态的来看，但是只有把用户加进去才能理解的更加透彻。在以前没有前后端分离的概念时，所以有的程序都是在后端，页面也是后端拼好之后，发给浏览器，然后浏览器进行渲染，所有的程序都集中在一起，这种程序叫做单体应用。
 
@@ -73,7 +73,7 @@ Model是表示业务模型的，模型就是真实世界在计算机中的映射
 
 我们再看一张mvc的图示：
 
-<img src="../assets/images/chapter9/mvc2.jpg" alt="node-app.png" style="zoom:1000%;" />
+<img src="/server/mvc2.jpg" alt="node-app.png" style="zoom:1000%;" />
 
 + 步骤一：用户操作浏览器，把数据传到服务器上，承载在HTTP的请求中。
 + 步骤二：Controller截获用户的请求拿到用户请求的数据，然后去调用Model。把数据塞给Model，然后告诉Model保存数据，Model就把数据保存到数据库中，数据库会把报错的结果告诉Model，然后Model就得到了保存的状态（成功或失败），然后就会把登录状态告知Controller。
@@ -107,7 +107,7 @@ Model是表示业务模型的，模型就是真实世界在计算机中的映射
 
 + 配置cookieValidationKey
 
-<img src="../assets/images/chapter9/yii-web-config.png" alt="node-app.png" style="zoom:80%;" />
+<img src="/server/yii-web-config.png" alt="node-app.png" style="zoom:80%;" />
 
 + 更改安装目录与静态资源目录的权限
 
@@ -119,13 +119,13 @@ $ chmod 777 /Applications/XAMPP/xamppfiles/htdocs/basic/web/assets
 
 + YII数据库配置文件
 
-<img src="../assets/images/chapter9/yii-db-config.png" alt="node-app.png" style="zoom:80%;" />
+<img src="/server/yii-db-config.png" alt="node-app.png" style="zoom:80%;" />
 
 ### II、使用GII生成代码
 
 我们使用gii生成CRUD代码，是为了在开发中提高效率。因为增删改查的逻辑是全世界通用的！我们既然要使用GII，就要先激活GII工具，不过在YII Basic版本中GII是默认激活的：
 
-<img src="../assets/images/chapter9/yii-gii-config.png" alt="node-app.png" style="zoom:80%;" />
+<img src="/server/yii-gii-config.png" alt="node-app.png" style="zoom:80%;" />
 
 **访问http://localhost/basic/web/index.php?r=gii 进入GII，开始使用。**
 
@@ -133,11 +133,11 @@ $ chmod 777 /Applications/XAMPP/xamppfiles/htdocs/basic/web/assets
 
 + 生成Model
 
-<img src="../assets/images/chapter9/model-generator.png" alt="node-app.png" style="zoom:80%;" />
+<img src="/server/model-generator.png" alt="node-app.png" style="zoom:80%;" />
 
 + 生成CRUD
 
-<img src="../assets/images/chapter9/CRUD-generator.png" alt="node-app.png" style="zoom:80%;" />
+<img src="/server/CRUD-generator.png" alt="node-app.png" style="zoom:80%;" />
 
 按照以上截图的步骤自动生成CRUD应用的代码。
 

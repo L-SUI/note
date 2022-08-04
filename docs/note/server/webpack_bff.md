@@ -43,7 +43,7 @@ Web Componets的兼容性到现在支持的还是挺好的，主流的现代浏�
 
 可能会有人提出疑问Web Component能够使用在生产环境吗？毫无疑问这个是可以的。YouTube已经在使用了。
 
-<img src="../assets/images/chapter9/youtube.png" alt="node-app.png" style="zoom:50%;" />
+<img src="/server/youtube.png" alt="node-app.png" style="zoom:50%;" />
 
 ### V、相关框架
 
@@ -139,7 +139,7 @@ Web Componets的兼容性到现在支持的还是挺好的，主流的现代浏�
 
     执行`npm run client:dev`，得到如下结果：
 
-    <img src="../assets/images/chapter9/01.png" alt="node-app.png" style="zoom:50%;" />
+    <img src="/server/01.png" alt="node-app.png" style="zoom:50%;" />
 
     > 需要注意的是我们在编写package.json的scripts脚本的时候，`start`、`test`、`build`这三个脚本命令是不要轻易的自定义的，这三个命令一般是上线的时候才运行的。start在生产环境一般是pm2启动，test是测试线上的代码，build是打包生产环境的client端和server端的代码。
 
@@ -191,7 +191,7 @@ Web Componets的兼容性到现在支持的还是挺好的，主流的现代浏�
 
 我们来运行`npm run demo`：
 
-<img src="../assets/images/chapter9/02.png" alt="node-app.png" style="zoom:50%;" />
+<img src="/server/02.png" alt="node-app.png" style="zoom:50%;" />
 
 我们可以看到先执行了predemo后执行demo。
 
@@ -262,11 +262,11 @@ Web Componets的兼容性到现在支持的还是挺好的，主流的现代浏�
 
   结果如下图，会输出控制台信息和report HTML，report HTML存储在项目的report目录中：
 
-  <img src="../assets/images/chapter9/03.png" alt="node-app.png" style="zoom:50%;" />
+  <img src="/server/03.png" alt="node-app.png" style="zoom:50%;" />
 
   浏览器打开report中html目录下的index.html可以看到：
 
-  <img src="../assets/images/chapter9/04.png" alt="node-app.png" style="zoom:50%;" />
+  <img src="/server/04.png" alt="node-app.png" style="zoom:50%;" />
 
   控制台和网页都清楚的展示出了被测试的文件代码的重复率。非常直观好用。
 
@@ -296,7 +296,7 @@ Web Componets的兼容性到现在支持的还是挺好的，主流的现代浏�
 
 然后我们删除一些测试生成的报告文件，把report目录整个删除。现在的目录结构如下图：
 
-<img src="../assets/images/chapter9/05.png" alt="node-app.png" style="zoom:50%;" />
+<img src="/server/05.png" alt="node-app.png" style="zoom:50%;" />
 
 由于目录结构的变化我们需要改变一些某些文件的路径：
 
@@ -337,7 +337,7 @@ NODE_ENV=development nodemon --delay 500ms --exec 'babel-node ./src/server/app.j
 
 现在我们更改完成了，执行一下`npm run server:start`启动服务。
 
-<img src="../assets/images/chapter9/06.png" alt="node-app.png" style="zoom:50%;" />
+<img src="/server/06.png" alt="node-app.png" style="zoom:50%;" />
 
 可以看到可以正常启动，说明我们的目录改造工作已经完成。
 
@@ -390,7 +390,7 @@ console.log('dev', process.argv);
 
 打印结果如下：
 
-<img src="../assets/images/chapter9/07.png" alt="node-app.png" style="zoom:80%;" />
+<img src="/server/07.png" alt="node-app.png" style="zoom:80%;" />
 
 我们可以看到输出的结果是一个数组，这样的话我们就可以使用下标来获取环境变量。但是这里存在一个问题，在不同的系统下我们得到的数组不同，环境变量在数组中的位置也不同，这就使得用下标获取会出现取错的情况，未解决这个问题我们可以使用一个库，**yargs**。yargs可以把process.argv数组转换为对象。
 
@@ -408,7 +408,7 @@ const { argv } = require('yargs');
 console.log(argv);
 ```
 
-<img src="../assets/images/chapter9/08.png" alt="node-app.png" style="zoom:80%;" />
+<img src="/server/08.png" alt="node-app.png" style="zoom:80%;" />
 
 我们可以看到输出是一个对象，我们使用argv.mode就能拿到当前的webpack的环境变量。现在拿到了环境变量就表示我们能够对环境进行代码逻辑的区分了。
 
@@ -510,7 +510,7 @@ const bisicConfig = {
 module.exports = merge(basicConfig, envConfig);
 ```
 
-<img src="../assets/images/chapter9/09.png" alt="node-app.png" style="zoom:80%;" />
+<img src="/server/09.png" alt="node-app.png" style="zoom:80%;" />
 
 可以看到输出出来的files是一个入口文件路径的数组。下面我们就是要用这个数组来处理成entry入口的数组格式，我们先来看一下entry的入口格式：
 
@@ -566,7 +566,7 @@ const bisicConfig = {
 module.exports = merge(basicConfig, envConfig);
 ```
 
-<img src="../assets/images/chapter9/10.png" alt="node-app.png" style="zoom:100%;" />
+<img src="/server/10.png" alt="node-app.png" style="zoom:100%;" />
 
 我们可以看到输出的结果，是正确的的，到现在我们已经把多入口对象处理完毕。
 
@@ -766,7 +766,7 @@ export default BooksController;
 
 改完之后我们来看一下浏览器的渲染效果，在地址栏输入`localhost:8000/books/list`：
 
-<img src="../assets/images/chapter9/11.png" alt="node-app.png" style="zoom:100%;" />
+<img src="/server/11.png" alt="node-app.png" style="zoom:100%;" />
 
 相同的我们也可以改一下create页面。现在我们模板已经处理的差不多了，接下来就是使用webpack进行打包了，我们需要把JS和CSS文件都打包到HTML中。需要使用`html-webpack-plugin`。
 
@@ -826,7 +826,7 @@ module.exports = merge(basicConfig, envConfig);
 
 执行**npm run client:dev**，我们看一下结果：
 
-<img src="../assets/images/chapter9/12.png" alt="node-app.png" style="zoom:100%;" />
+<img src="/server/12.png" alt="node-app.png" style="zoom:100%;" />
 
 我们会发现，我们是个多页面应用，但是webpack就打包出一个index.html，这显然是不合适的，这里的html打包和上文中的JS打包相同的需要根据每个入口打包，一个入口文件对应一个html，并且每个html中需要引入各自的JS和CSS而不是全部引入，这样的话我们就要对webpack.config.js进行配置：
 
@@ -954,7 +954,7 @@ module.exports = merge(basicConfig, envConfig);
 
 优化完的打包结果如图：
 
-<img src="../assets/images/chapter9/13.png" alt="node-app.png" style="zoom:100%;" />
+<img src="/server/13.png" alt="node-app.png" style="zoom:100%;" />
 
 关于第二个问题的解决思路是：
 

@@ -104,7 +104,7 @@ module.exports = merge(baseConfig, envConfig);
 
 然后我们执行`npm run client:dev`：
 
-<img src="../assets/images/chapter9/14.png" alt="node-app.png" style="zoom:100%;" />
+<img src="/server/14.png" alt="node-app.png" style="zoom:100%;" />
 
 这里要注意我们的自定义插件是基于**HTMLWebpackPlugin**这个插件的功能之上进行开发的，所以一定要让HTMLWebpackPlugin先执行，所以在webpack.config.js注入plugin的时候一定要注意插件的注入顺序（也就是plugins数组中元素的位置先后一定是HTMLWebpackPlugin在前，我们自定义的插件在后）。
 
@@ -157,7 +157,7 @@ files.forEach(path => {
 
 如我们所看见的设置HTMLWebpackPlugin`inject: false`。就这么简单？我们来试一下运行`npm run client:dev`命令，然后查看打包好的html文件：
 
-<img src="../assets/images/chapter9/15.png" alt="node-app.png" style="zoom:100%;" />
+<img src="/server/15.png" alt="node-app.png" style="zoom:100%;" />
 
 我们可以看到以前注入的CSS文件和JS文件现在都不存在了。说明我们配置生效了，把HTMLWebpackPlugin插件的注入功能干掉了。接下来就是我们在自定义插件里面按照我们自己的需求编写静态文件注入的逻辑。
 
@@ -200,7 +200,7 @@ module.exports = HtmlAfterPlugin;
 
 执行打包命令的结果如下：
 
-<img src="../assets/images/chapter9/16.png" alt="node-app.png" style="zoom:100%;" />
+<img src="/server/16.png" alt="node-app.png" style="zoom:100%;" />
 
 可以看到我们拿到了所有的数据（data）。这样的话我们就可以编写注入逻辑了，往下读...
 
@@ -265,7 +265,7 @@ module.exports = HtmlAfterPlugin;
 
 这样的话我们就可以把JS打包到指定的位置了，同样的CSS也是相同的操作，可以仿照JS自行处理。
 
-<img src="../assets/images/chapter9/17.png" alt="node-app.png" style="zoom:100%;" />
+<img src="/server/17.png" alt="node-app.png" style="zoom:100%;" />
 
 可以看到打包的结果和我们想要的一样，实现JS文件的执定位置插入。现在关于前端的代码我们还有一个小小的优化要做，可以看到在模板中引入`layout.html`和`nav.html`的时候都是用的当前文件的相对路径进行查找，这样文件层级一旦多了就会变得很繁琐，我们可以像Vue项目中的@符号一样，也写成那样子，然后再webpack打包的过程中再进行还原，这样的话就降低了开发人员的心智负担。
 
@@ -364,7 +364,7 @@ module.exports = HtmlAfterPlugin;
 
 执行`npm run client:dev`打包结果如下：
 
-<img src="../assets/images/chapter9/19.png" alt="node-app.png" style="zoom:100%;" />
+<img src="/server/19.png" alt="node-app.png" style="zoom:100%;" />
 
 如我们的预期，此功能实现完毕。此外webpack也是支持配置简写路径的，直接配置一个resolve字段就OK：
 
@@ -457,7 +457,7 @@ nav();
 
 执行`npm run client:dev`，这样nav.js就能被打包到dist的books-create.bundle.js中：
 
-<img src="../assets/images/chapter9/20.png" alt="node-app.png" style="zoom:100%;" />
+<img src="/server/20.png" alt="node-app.png" style="zoom:100%;" />
 
 到现在为止我们的前端代码已经完全处理完毕了。接着我们来处理Node后端的代码，后端我们是用Gulp来打包。
 
@@ -620,7 +620,7 @@ function buildDev() {
 
 执行`npm run server:dev `：
 
-<img src="../assets/images/chapter9/21.png" alt="node-app.png" style="zoom:50%;" />
+<img src="/server/21.png" alt="node-app.png" style="zoom:50%;" />
 
 我们可以看到已经打包完成，随便改一下server里面的文件内容，会重新打包（经过 笔者测试，可用！）。但是终端没有任何输出，直接重新打包。需要检查打包出来的文件才能知道已经重新打包了。
 
@@ -882,7 +882,7 @@ cross-env NODE_ENV=production gulp
 
 在来看编译之前与编译之后的差别：
 
-<img src="../assets/images/chapter9/22.png" alt="node-app.png" style="zoom:50%;" />
+<img src="/server/22.png" alt="node-app.png" style="zoom:50%;" />
 
 我们可以看到Tree Shaking已经生效。现在我们的需求是需要优化压缩config中的index.js，再生产环境中对于环境的判断和开发环境的代码都是无意义的，直接执行production环境下的config代码就OK了，rollup是没有提供这个功能的，但是它提供了一个插件可以做到实现这个需求：`@rollup/plugin-replace`
 
@@ -972,7 +972,7 @@ gulp.task("default", build);
 
 我们看一下打包好的dist/config/index.js
 
-<img src="../assets/images/chapter9/23.png" alt="node-app.png" style="zoom:50%;" />
+<img src="/server/23.png" alt="node-app.png" style="zoom:50%;" />
 
 毫无疑问我们已经把开发环境下的所有配置都优化掉了只保留了生产环境的配置，实现了TreeShaking。还有一个插件是`prepack`也有类似的预处理的功能，有兴趣的可以试一下：
 
