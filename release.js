@@ -45,7 +45,6 @@ const main = async () => {
   echo(`\nReleasing start ...\n`);
   const commitDesc = await getCommitDesc();
   if(commitDesc.current) {
-    console.log(commitDesc.current)
     await exec(`git add .`);
     await exec(`git commit -m "${commitDesc.type}: ${commitDesc.desc}"`);
     await exec(`git push`);

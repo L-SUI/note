@@ -209,6 +209,11 @@ const sidebarMap = [
         ]
     },
     {
+        title: '其他',
+        dirname: 'other',
+        collapsable: true,
+    },
+    {
         title: '文章收藏',
         dirname: 'article',
         collapsable: true,
