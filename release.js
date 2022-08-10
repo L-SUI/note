@@ -51,6 +51,7 @@ const main = async () => {
   }
   await exec(`npm run docs:build`);
   await exec(`cd ../`);
+  await exec(`ls`);
   await exec(`cd ./L-SUI.github.io`);
   await exec(`git pull`);
   await exec(`cd ../`);
