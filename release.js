@@ -50,9 +50,7 @@ const main = async () => {
     await exec(`git push`);
   }
   await exec(`npm run docs:build`);
-  await exec(`cd ../`);
-  await exec(`ls`);
-  await exec(`cd ./L-SUI.github.io`);
+  await exec(`cd ../L-SUI.github.io`);
   await exec(`git pull`);
   await exec(`cd ../`);
   await exec(`cp -af ./note/docs/.vuepress/dist/  ./L-SUI.github.io/`);
