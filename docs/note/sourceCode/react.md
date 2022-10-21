@@ -1,4 +1,8 @@
-# React16.13源码解析
+# React源码解析
+
+[toc]
+
+## 下面版本版本16.13
 
 ## 资料分享
 
@@ -567,3 +571,40 @@ finishSyncRender是整个流程的最后一步了，它做了以下：
 
 4. batchUpdate isBatchingUpdates=true  批处理的状态
 
+## react最新解析
+
+1. React fiber?架构的核心原理是什么？
+   fiber架构分为了3个部分
+
+   1. Scheduler调度，通过任务的优先级来调度任务进入后面的构建流程
+      1. 同步任务和异步任务
+         1. 同步任务unbatchedUpdate(ReactDOM.render)
+         2. 异步的任务this.setState(O)走MessageChannel调度优先级
+         3. 异步任务能不能同步？
+            a.unbatchedUpdate(()=>{
+            this.setState();
+            步
+      2. React17是这么实现的；多个this.setStatel的批处理问题，判断了lanes一致，复用同一次更
+         新。
+      3. MessageChannel不用setTimeout
+      4. 为什么不采用微任务呢
+         1.微任务是会把页面卡死的
+
+   2. Reconciler构建fiber tree,做DOM diff,给变更的fber打上标记，方便后续处理
+      1. 构建fiber tree的具体流程是什么？
+         1. 从上到下创建iber,diff,生命周期
+         2. 从下到上的过程
+            a. 创建dom元素，把effect:全部给到跟节点
+      2. 是可以被中断的
+      3. 打上flags,生成一个effets链条
+      4. 把dom都给生成了，保存起来
+   3. commit(render)阶段一把变更的组件的变化，渲染到页面上了
+      1. 3个while,.渲染前，渲染中，渲染后
+      2. 优先子节点执行声明周期
+      3. 不能被中断了，此时如果还能被中断，开销会更大。把commitRoot的优先级设为了最高
+
+2. 为什么是双缓存结构？
+   a.一个属性就立刻拿到了和它对应的节点
+
+3. 通过学习react源码学到了什么？
+   React-reconciler==>tora3

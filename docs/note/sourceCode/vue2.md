@@ -1,5 +1,9 @@
 # VUE2源码解析
 
+[TOC]
+
+
+
 ## 资料分享
 
 1. 基本vue的api使用，用vue实战一个spa  [https://cn.vuejs.org/index.html](https://cn.vuejs.org/index.html)
@@ -884,3 +888,54 @@ optimize 的过程，就是深度遍历这个 AST 树，去检测它的每⼀一
 
 生成之后，会有标记静态的和动态的。然后每个组件的的更新都是由自己的watcher去维护，不用从头到尾，从上到下的去遍历，这部分相比react而言，vue做的更好。
 
+## 编译
+
+vue2编译生成后的代码
+
+```js
+with(this){
+  return _(...)
+}
+```
+
+> 使用with原因分析不了模板里的代码语句，vue3中离线编译集成了js编译器分析js，在线编译还是使用了with
+
+### 编译优化
+
+vue2中只有静态节点优化，源码中使用了递归一层一层标记
+
+### vue2和vue3的模板处理区别
+
+vue2使用了正则匹配模板(回溯)
+
+vue3使用了状态机 
+
+## 总结
+
+### vue2执行过程
+
+new Vue()=> 
+
+初始化数据，对初始化的数据进行监听(create)=>
+
+编译渲染mount(创建vdom,创建watcher,获取初始(最新)数据(watcher.get),收集依赖(dep.addDep)，通知渲染update(
+
+​	没有vnode=>执行render=>生成vnode=>dom
+
+​	有vnode=>执行render=>生成vnode=>diff=>dom
+
+))=>
+
+修改数据=>
+
+触发数据监听set(dep.notify)=>
+
+通知每一个watcher(重走get流程)
+
+
+
+### 为什么vue不适合做大型应用
+
+vue2可以定向到组件级别的render，维护来一套映射关系（watcher），所以不适合大应用
+
+react fiber维度的，颗粒化，没有维护大关系，内存占用小=>可中断的dom diff(类似操作系统的进程切换)

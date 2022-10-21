@@ -2,6 +2,10 @@
 
 **版本3.0.0-alpha.1**  (与最新版本差距不大)
 
+[TOC]
+
+
+
 ## 回顾
 
 首先先回顾一下vue2
@@ -36,6 +40,9 @@
    		a
    }
    正则匹配的性能瓶颈较高。
+   
+   object.definproperty重写
+   proxy拦截
 ```
 
 ## 基础
@@ -1458,4 +1465,8 @@ export function render(_ctx, _cache, $props, $setup, $data, $options) {
 // Check the console for the AST
 //对比完成靶向更新
 ```
+
+## 编译
+
+状态机方式（例如遇到node，字符串等等都怎么处理）
 
